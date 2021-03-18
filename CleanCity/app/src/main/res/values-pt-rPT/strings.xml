@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cidade Limpa</string>
+    <string name="mainPage_email">Email</string>
+    <string name="mainPage_password">Password</string>
+    <string name="mainPage_buttonLogin">Login</string>
+    <string name="mainPage_buttonRegistar">Registar</string>
+    <string name="mainPage_buttonNotas">Notas</string>
+    <string name="mainPage_checkboxTerms">Eu li e concordo com os termos de uso.</string>
+</resources>
