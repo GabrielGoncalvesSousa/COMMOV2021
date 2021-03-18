@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Clean City</string>
+    <string name="mainPage_email">Email</string>
+    <string name="mainPage_password">Password</string>
+    <string name="mainPage_buttonLogin">Login</string>
+    <string name="mainPage_buttonRegistar">Register</string>
+    <string name="mainPage_buttonNotas">Notes</string>
+    <string name="mainPage_checkboxTerms">I agree to the Terms and Conditions</string>
 </resources>
