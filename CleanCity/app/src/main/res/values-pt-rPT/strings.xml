@@ -7,6 +7,17 @@
     <string name="mainPage_buttonRegistar">Registar</string>
     <string name="mainPage_buttonNotas">Notas</string>
     <string name="mainPage_checkboxTerms">Eu li e concordo com os termos de uso.</string>
-    <string name="notesPage_ActionBarTitle">Notas</string>
+    <string name="notesPage_ActionBarTitle">Notas Pessoais</string>
     <string name="notesPage_ActionBarAdd">Adicionar Nota</string>
+    <string name="addNotesPage_ActionBarTitle">Criar Nota</string>
+    <string name="textViewAddNotesPage_Subject">Assunto</string>
+    <string name="textViewAddNotesPage_Street">Rua</string>
+    <string name="textViewAddNotesPage_Locality">Localidade</string>
+    <string name="textViewAddNotesPage_PostalCode">Código-Postal</string>
+    <string name="textViewAddNotesPage_Date">Data</string>
+    <string name="textViewAddNotesPage_Observations">Observações</string>
+    <string name="editTextsAddNotesPage_Subject">Insira Assunto</string>
+    <string name="editTextsAddNotesPage_Street">Nome da Rua</string>
+    <string name="editTextsAddNotesPage_Locality">Distrito/Cidade</string>
+    <string name="buttonSave">Guardar</string>
 </resources>

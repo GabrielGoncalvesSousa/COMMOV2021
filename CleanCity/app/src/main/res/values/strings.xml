@@ -1,11 +1,36 @@
 <resources>
+    <!--    AppName-->
     <string name="app_name">Clean City</string>
+
+    <!--    Main_Page -->
     <string name="mainPage_email">Email</string>
     <string name="mainPage_password">Password</string>
     <string name="mainPage_buttonLogin">Login</string>
     <string name="mainPage_buttonRegistar">Register</string>
     <string name="mainPage_buttonNotas">Notes</string>
     <string name="mainPage_checkboxTerms">I agree to the Terms and Conditions</string>
-    <string name="notesPage_ActionBarTitle">Notes</string>
+
+    <!--    Notes_Page Toolbar-->
+    <string name="notesPage_ActionBarTitle">Personal Notes</string>
     <string name="notesPage_ActionBarAdd">Add Note</string>
+
+    <!--    AddNotes_Page Toolbar-->
+    <string name="addNotesPage_ActionBarTitle">Add Note</string>
+
+    <!--    AddNotes_Page TextViews-->
+    <string name="textViewAddNotesPage_Subject">Subject</string>
+    <string name="textViewAddNotesPage_Street">Street</string>
+    <string name="textViewAddNotesPage_Locality">Locality</string>
+    <string name="textViewAddNotesPage_PostalCode">Postal-Code</string>
+    <string name="textViewAddNotesPage_Date">Date</string>
+    <string name="textViewAddNotesPage_Observations">Observations</string>
+
+    <!--    AddNotes_Page EditTexts-->
+    <string name="editTextsAddNotesPage_Subject">Insert Subject</string>
+    <string name="editTextsAddNotesPage_Street">Street Adress</string>
+    <string name="editTextsAddNotesPage_Locality">District/City</string>
+
+    <!--    AddNotes_Page Save Button-->
+    <string name="buttonSave">Save</string>
+
 </resources>

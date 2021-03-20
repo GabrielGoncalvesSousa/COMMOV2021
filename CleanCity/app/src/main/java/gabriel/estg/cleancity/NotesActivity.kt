@@ -2,6 +2,7 @@ package gabriel.estg.cleancity
 
 import android.annotation.SuppressLint
 import android.content.ClipData
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,10 @@ class NotesActivity : AppCompatActivity() {
 
         toolbar.setNavigationIcon(R.drawable.ic_action_back)
 
+        toolbar.setNavigationOnClickListener({
+            startActivity(Intent(this, MainActivity::class.java).apply {
+            })
+        })
 
     }
 
@@ -35,8 +40,8 @@ class NotesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var itemView = item.itemId
         when (itemView) {
-            R.id.addNote -> Toast.makeText(applicationContext, "Add Clicked", Toast.LENGTH_LONG)
-                .show()
+            R.id.addNote -> startActivity(Intent(this, AddNoteActivity::class.java).apply {
+            })
         }
         return false
     }
