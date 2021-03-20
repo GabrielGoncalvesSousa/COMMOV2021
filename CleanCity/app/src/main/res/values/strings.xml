@@ -6,4 +6,6 @@
     <string name="mainPage_buttonRegistar">Register</string>
     <string name="mainPage_buttonNotas">Notes</string>
     <string name="mainPage_checkboxTerms">I agree to the Terms and Conditions</string>
+    <string name="notesPage_ActionBarTitle">Notes</string>
+    <string name="notesPage_ActionBarAdd">Add Note</string>
 </resources>

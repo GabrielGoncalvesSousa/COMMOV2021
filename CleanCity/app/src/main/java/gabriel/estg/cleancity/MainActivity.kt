@@ -1,9 +1,12 @@
 package gabriel.estg.cleancity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.buttonNotes).setOnClickListener({
-            Log.i("ButtonNotes","Listener Works")
-        })
+        findViewById<Button>(R.id.buttonNotes).setOnClickListener {
+            startActivity( Intent(this, NotesActivity::class.java).apply {
+            } )
+        }
+
+
     }
 }
