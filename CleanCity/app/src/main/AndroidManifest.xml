@@ -9,14 +9,14 @@
         android:roundIcon="@drawable/logo_transparent"
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanCity">
-
-        <activity android:name=".NotesActivity"
-            android:theme="@style/Theme.CleanCity.NoActionBar">
-        </activity>
-
+        <activity android:name=".AddNoteActivity"></activity>
+        <activity
+            android:name=".NotesActivity"
+            android:theme="@style/Theme.CleanCity.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
