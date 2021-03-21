@@ -24,10 +24,9 @@ class NotesActivity : AppCompatActivity() {
 
         toolbar.setNavigationIcon(R.drawable.ic_action_back)
 
-        toolbar.setNavigationOnClickListener({
-            startActivity(Intent(this, MainActivity::class.java).apply {
-            })
-        })
+        toolbar.setNavigationOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java).apply{})
+        }
 
     }
 
