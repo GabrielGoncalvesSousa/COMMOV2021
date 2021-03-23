@@ -9,10 +9,11 @@
         android:roundIcon="@drawable/logo_transparent"
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanCity">
-        <activity android:name=".AddNoteActivity"></activity>
+        <activity android:name=".NewNoteActivity"></activity>
+        <activity android:name=".AddNoteActivity" />
         <activity
             android:name=".NotesActivity"
-            android:theme="@style/Theme.CleanCity.NoActionBar"></activity>
+            android:theme="@style/Theme.CleanCity.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
