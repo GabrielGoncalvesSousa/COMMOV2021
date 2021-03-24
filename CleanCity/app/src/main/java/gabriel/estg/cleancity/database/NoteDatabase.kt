@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.time.chrono.HijrahChronology
 import java.time.chrono.HijrahChronology.INSTANCE
 
-@Database(entities = [Note::class], version = 1, exportSchema = false)
+@Database(entities = [Note::class], version = 3, exportSchema = false)
 public abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
@@ -70,7 +70,8 @@ public abstract class NoteDatabase : RoomDatabase() {
                 "Cidade das couves",
                 "4213",
                 "3/21/2021",
-                "Ta tudo partido"
+                "Ta tudo partido",
+                false
             )
             noteDao.insert(note)
 
