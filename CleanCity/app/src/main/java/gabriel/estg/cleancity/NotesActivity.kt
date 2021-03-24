@@ -29,8 +29,10 @@ class NotesActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
+
 
         var toolbar = findViewById<Toolbar>(R.id.notesToolbar)
         setSupportActionBar(toolbar)
@@ -46,11 +48,11 @@ class NotesActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
         noteViewModel.allNotes.observe(this, Observer { notes ->
             // Update the cached copy of the words in the adapter.
             notes?.let { adapter.submitList(it) }
         })
+
     }
 
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {

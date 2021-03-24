@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".database.NotesApplication"
         android:icon="@drawable/logo_transparent"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo_transparent"
