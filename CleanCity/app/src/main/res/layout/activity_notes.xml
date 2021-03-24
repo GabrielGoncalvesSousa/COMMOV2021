@@ -25,4 +25,16 @@
         app:titleMargin="0dp"
         app:titleTextColor="@android:color/white" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/big_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesToolbar"
+        tools:listitem="@layout/recyclerview_item" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
