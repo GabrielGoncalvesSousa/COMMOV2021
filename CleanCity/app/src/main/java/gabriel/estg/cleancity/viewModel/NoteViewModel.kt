@@ -14,9 +14,9 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
         repository.insert(note)
     }
 
-    fun delete(id:Int) = viewModelScope.launch {
-        repository.delete(id)
-    }
+//    fun deleteNote(note:Note) = viewModelScope.launch {
+//        repository.deleteNote(note)
+//    }
 }
 
 class NoteViewModelFactory(private val repository: NoteRepository) : ViewModelProvider.Factory {

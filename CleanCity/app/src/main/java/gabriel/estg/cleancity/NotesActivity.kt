@@ -61,6 +61,12 @@ class NotesActivity(context: Context) : AppCompatActivity() {
 //        }
 //        val itemTouchHelper = ItemTouchHelper(swipeDelete)
 //        itemTouchHelper.attachToRecyclerView(recyclerView)
+//
+//        val deleteButton = findViewById<Button>(R.id.buttonDelete)
+//        deleteButton.setOnClickListener{
+//            var notes=noteViewModel.allNotes
+//        }
+
     }
 
     //Inflate Options Menu

@@ -3,6 +3,7 @@ package gabriel.estg.cleancity.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -15,8 +16,6 @@ import gabriel.estg.cleancity.database.dao.NoteDao
 import gabriel.estg.cleancity.database.entities.Note
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder.create(parent)
@@ -40,9 +39,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             notifyItemChanged(position)
         }
 
-//        fun deleteItem(index: Int) {
-//                notifyDataSetChanged()
-//        }
+
 
 
     }
