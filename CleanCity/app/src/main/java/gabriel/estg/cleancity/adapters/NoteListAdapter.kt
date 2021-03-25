@@ -45,7 +45,6 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         val postalCodeItemView: TextView = itemView.findViewById(R.id.reciclerPostalCodeDB)
         val dateItemView: TextView = itemView.findViewById(R.id.reciclerDateDB)
         val observationsItemView: TextView = itemView.findViewById(R.id.reciclerObservationsDB)
-        val obs: TextView = itemView.findViewById(R.id.reciclerObservations)
 
         val linealLayout: LinearLayout = itemView.findViewById(R.id.linearLayout)
         val expandableLayout: RelativeLayout = itemView.findViewById(R.id.expandable_layout)
