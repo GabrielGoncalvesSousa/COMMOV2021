@@ -21,7 +21,7 @@ import gabriel.estg.cleancity.database.entities.Note
 import gabriel.estg.cleancity.viewModel.NoteViewModel
 import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 
-class NotesActivity(context: Context) : AppCompatActivity() {
+class NotesActivity : AppCompatActivity() {
 
 
     private val noteViewModel: NoteViewModel by viewModels {
