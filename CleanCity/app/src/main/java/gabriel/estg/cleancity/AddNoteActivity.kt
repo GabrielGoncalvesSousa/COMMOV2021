@@ -9,8 +9,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
+import gabriel.estg.cleancity.database.entities.Note
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
@@ -22,10 +22,9 @@ class AddNoteActivity : AppCompatActivity() {
         var subject = findViewById<EditText>(R.id.editTextSubject)
         var street = findViewById<EditText>(R.id.editTextStreet)
         var locality = findViewById<EditText>(R.id.editTextLocality)
-        var postalCode =findViewById<EditText>(R.id.editTextPostal)
-        var date =findViewById<EditText>(R.id.editTextDate)
-        var observations =findViewById<EditText>(R.id.editTextObservations)
-
+        var postalCode = findViewById<EditText>(R.id.editTextPostal)
+        var date = findViewById<EditText>(R.id.editTextDate)
+        var observations = findViewById<EditText>(R.id.editTextObservations)
 
 
         //Toolbar
@@ -56,17 +55,18 @@ class AddNoteActivity : AppCompatActivity() {
         //Save Button
         val button = findViewById<Button>(R.id.buttonSave)
         button.setOnClickListener {
-            Log.i("onActivityResult","Button was pressed")
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(subject.text)) {
+            if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(locality.text) || TextUtils.isEmpty(postalCode.text)
+                || TextUtils.isEmpty(date.text) || TextUtils.isEmpty(observations.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-                Log.i("onActivityResult","Got canceled")
-
             } else {
-                val note = subject.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, note)
+                replyIntent.putExtra("subject", subject.text.toString())
+                replyIntent.putExtra("street", street.text.toString())
+                replyIntent.putExtra("locality", locality.text.toString())
+                replyIntent.putExtra("postalCode", postalCode.text.toString())
+                replyIntent.putExtra("date", date.text.toString())
+                replyIntent.putExtra("observations", observations.text.toString())
                 setResult(Activity.RESULT_OK, replyIntent)
-                Log.i("onActivityResult","result OK")
             }
             finish()
         }

@@ -1,16 +1,12 @@
 package gabriel.estg.cleancity
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ClipData
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.view.menu.MenuView
@@ -33,12 +29,8 @@ class NotesActivity : AppCompatActivity() {
     private val newListActivityRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        Log.i("onActivityResult", "onCreate")
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
-
 
         //Toolbar
         var toolbar = findViewById<Toolbar>(R.id.notesToolbar)
@@ -65,32 +57,40 @@ class NotesActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
-        Log.i("onActivityResult", "we got the result back")
-
         if (requestCode == newListActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.getStringExtra(AddNoteActivity.EXTRA_REPLY)?.let { reply ->
-                val note = Note(
-                    reply.toInt(),
-                    "assunto",
-                    "rua",
-                    "cidade",
-                    "12313",
-                    "123123",
-                    "213123",
-                    false
-                )
-                Log.i("onActivityResult", note.toString())
-                noteViewModel.insert(note)
-            }
+
+            //Getting the data from the intent result
+            var subject = intentData?.getStringExtra("subject")
+            var street = intentData?.getStringExtra("street")
+            var locality = intentData?.getStringExtra("locality")
+            var postalCode = intentData?.getStringExtra("postalCode")
+            var date = intentData?.getStringExtra("date")
+            var observations = intentData?.getStringExtra("observations")
+
+            val note = Note(
+                null,
+                subject,
+                street,
+                locality,
+                postalCode,
+                date,
+                observations,
+                false
+            )
+            noteViewModel.insert(note)
+            Toast.makeText(
+                applicationContext, R.string.toastSuccessAddNotesPage,
+                Toast.LENGTH_LONG
+            ).show()
+
         } else {
             Toast.makeText(
                 applicationContext,
-                R.string.empty_not_saved,
+                R.string.toastFailAddNotesPage,
                 Toast.LENGTH_LONG
             ).show()
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_notes, menu)
