@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.R
+import gabriel.estg.cleancity.database.NoteRepository
+import gabriel.estg.cleancity.database.dao.NoteDao
 import gabriel.estg.cleancity.database.entities.Note
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder.create(parent)
@@ -36,6 +40,11 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             notifyItemChanged(position)
         }
 
+//        fun deleteItem(index: Int) {
+//                notifyDataSetChanged()
+//        }
+
+
     }
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -58,6 +67,8 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         }
     }
 
+
+
     class NotesComparator : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem === newItem
@@ -67,4 +78,5 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             return oldItem.id == newItem.id
         }
     }
+
 }
