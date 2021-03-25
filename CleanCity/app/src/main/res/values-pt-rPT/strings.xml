@@ -20,4 +20,10 @@
     <string name="editTextsAddNotesPage_Street">Nome da Rua</string>
     <string name="editTextsAddNotesPage_Locality">Distrito/Cidade</string>
     <string name="buttonSave">Guardar</string>
+    <string name="textViewReciclerView_Subject">"Assunto: "</string>
+    <string name="textViewReciclerView_Street">"Rua: "</string>
+    <string name="textViewReciclerView_Locality">"Localidade: "</string>
+    <string name="textViewReciclerView_PostalCode">"Código-Postal: "</string>
+    <string name="textViewReciclerView_Date">"Data: "</string>
+    <string name="textViewReciclerView_Observations">"Observações: "</string>
 </resources>

@@ -14,6 +14,14 @@
     <string name="notesPage_ActionBarTitle">Personal Notes</string>
     <string name="notesPage_ActionBarAdd">Add Note</string>
 
+    <!--    ReciclerView-->
+    <string name="textViewReciclerView_Subject">Subject: </string>
+    <string name="textViewReciclerView_Street">Street: </string>
+    <string name="textViewReciclerView_Locality">Locality: </string>
+    <string name="textViewReciclerView_PostalCode">Postal-Code: </string>
+    <string name="textViewReciclerView_Date">Date: </string>
+    <string name="textViewReciclerView_Observations">Observations: </string>
+
     <!--    AddNotes_Page Toolbar-->
     <string name="addNotesPage_ActionBarTitle">Add Note</string>
 
