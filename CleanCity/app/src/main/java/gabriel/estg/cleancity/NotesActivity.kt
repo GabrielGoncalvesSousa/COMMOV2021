@@ -1,15 +1,12 @@
 package gabriel.estg.cleancity
 
-import android.annotation.SuppressLint
-import android.content.ClipData
+import android.app.Activity
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.view.menu.MenuView
@@ -19,35 +16,37 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.adapters.NoteListAdapter
 import gabriel.estg.cleancity.database.NotesApplication
+import gabriel.estg.cleancity.database.entities.Note
 import gabriel.estg.cleancity.viewModel.NoteViewModel
 import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 
 class NotesActivity : AppCompatActivity() {
 
+
     private val noteViewModel: NoteViewModel by viewModels {
         NoteViewModelFactory((application as NotesApplication).repository)
     }
+    private val newListActivityRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
 
-
+        //Toolbar
         var toolbar = findViewById<Toolbar>(R.id.notesToolbar)
         setSupportActionBar(toolbar)
-
         toolbar.setNavigationIcon(R.drawable.ic_action_back)
-
-        toolbar.setNavigationOnClickListener{
-            startActivity(Intent(this, MainActivity::class.java).apply{})
+        toolbar.setNavigationOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java).apply {})
         }
 
+        //RecylerView
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = NoteListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //ViewModel
         noteViewModel.allNotes.observe(this, Observer { notes ->
             // Update the cached copy of the words in the adapter.
             notes?.let { adapter.submitList(it) }
@@ -55,24 +54,43 @@ class NotesActivity : AppCompatActivity() {
 
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, intentData)
-//
-//        if (requestCode == newNoteActivityRequestCode && resultCode == Activity.RESULT_OK) {
-//            intentData?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let { reply ->
-//                val word = Word(reply)
-//                wordViewModel.insert(word)
-//            }
-//        } else {
-//            Toast.makeText(
-//                applicationContext,
-//                R.string.empty_not_saved,
-//                Toast.LENGTH_LONG
-//            ).show()
-//        }
-//    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
 
+        if (requestCode == newListActivityRequestCode && resultCode == Activity.RESULT_OK) {
 
+            //Getting the data from the intent result
+            var subject = intentData?.getStringExtra("subject")
+            var street = intentData?.getStringExtra("street")
+            var locality = intentData?.getStringExtra("locality")
+            var postalCode = intentData?.getStringExtra("postalCode")
+            var date = intentData?.getStringExtra("date")
+            var observations = intentData?.getStringExtra("observations")
+
+            val note = Note(
+                null,
+                subject,
+                street,
+                locality,
+                postalCode,
+                date,
+                observations,
+                false
+            )
+            noteViewModel.insert(note)
+            Toast.makeText(
+                applicationContext, R.string.toastSuccessAddNotesPage,
+                Toast.LENGTH_LONG
+            ).show()
+
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.toastFailAddNotesPage,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_notes, menu)
@@ -82,8 +100,10 @@ class NotesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var itemView = item.itemId
         when (itemView) {
-            R.id.addNote -> startActivity(Intent(this, AddNoteActivity::class.java).apply {
-            })
+            R.id.addNote -> {
+                val intent = Intent(this@NotesActivity, AddNoteActivity::class.java)
+                startActivityForResult(intent, newListActivityRequestCode)
+            }
         }
         return false
     }

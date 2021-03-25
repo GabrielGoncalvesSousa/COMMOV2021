@@ -1,8 +1,8 @@
 <resources>
-    <!--    AppName-->
+    <!--    AppName  -->
     <string name="app_name">Clean City</string>
 
-    <!--    Main_Page -->
+    <!--    Main_Page  -->
     <string name="mainPage_email">Email</string>
     <string name="mainPage_password">Password</string>
     <string name="mainPage_buttonLogin">Login</string>
@@ -10,11 +10,11 @@
     <string name="mainPage_buttonNotas">Notes</string>
     <string name="mainPage_checkboxTerms">I agree to the Terms and Conditions</string>
 
-    <!--    Notes_Page Toolbar-->
+    <!--    Notes_Page Toolbar  -->
     <string name="notesPage_ActionBarTitle">Personal Notes</string>
     <string name="notesPage_ActionBarAdd">Add Note</string>
 
-    <!--    ReciclerView-->
+    <!--    ReciclerView  -->
     <string name="textViewReciclerView_Subject">Subject: </string>
     <string name="textViewReciclerView_Street">Street: </string>
     <string name="textViewReciclerView_Locality">Locality: </string>
@@ -22,10 +22,10 @@
     <string name="textViewReciclerView_Date">Date: </string>
     <string name="textViewReciclerView_Observations">Observations: </string>
 
-    <!--    AddNotes_Page Toolbar-->
+    <!--    AddNotes_Page Toolbar  -->
     <string name="addNotesPage_ActionBarTitle">Add Note</string>
 
-    <!--    AddNotes_Page TextViews-->
+    <!--    AddNotes_Page TextViews  -->
     <string name="textViewAddNotesPage_Subject">Subject</string>
     <string name="textViewAddNotesPage_Street">Street</string>
     <string name="textViewAddNotesPage_Locality">Locality</string>
@@ -33,17 +33,17 @@
     <string name="textViewAddNotesPage_Date">Date</string>
     <string name="textViewAddNotesPage_Observations">Observations</string>
 
-    <!--    AddNotes_Page EditTexts-->
+    <!--    AddNotes_Page EditTexts  -->
     <string name="editTextsAddNotesPage_Subject">Insert Subject</string>
     <string name="editTextsAddNotesPage_Street">Street Adress</string>
     <string name="editTextsAddNotesPage_Locality">District/City</string>
 
-    <!--    AddNotes_Page Save Button-->
-    <string name="buttonSave">Save</string>
+    <!--    AddNotes_Page Save Button  -->
+    <string name="saveButtonAddNotesPage">Save</string>
 
 
-    <string name="hint_word">Word...</string>
-    <string name="button_save">Save</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <string name="add_word">Add word</string>
+    <!--    AddNotes_Page Toast  -->
+    <string name="toastFailAddNotesPage">Note not added, missing information</string>
+    <string name="toastSuccessAddNotesPage">Note added successfully</string>
+
 </resources>
