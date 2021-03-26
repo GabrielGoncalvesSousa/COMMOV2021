@@ -11,11 +11,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.R
-import gabriel.estg.cleancity.database.NoteRepository
-import gabriel.estg.cleancity.database.dao.NoteDao
 import gabriel.estg.cleancity.database.entities.Note
+import gabriel.estg.cleancity.viewModel.NoteViewModel
+import org.w3c.dom.Text
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
+
+
+    fun getCurrentId(note: Note): Int? {
+        return note.id
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder.create(parent)
@@ -33,14 +38,10 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         holder.observationsItemView.text = current.observacoes
 
         holder.expandableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
-
         holder.linealLayout.setOnClickListener {
             current.expandable = !current.expandable
             notifyItemChanged(position)
         }
-
-
-
 
     }
 
@@ -51,7 +52,6 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         val postalCodeItemView: TextView = itemView.findViewById(R.id.reciclerPostalCodeDB)
         val dateItemView: TextView = itemView.findViewById(R.id.reciclerDateDB)
         val observationsItemView: TextView = itemView.findViewById(R.id.reciclerObservationsDB)
-
         val linealLayout: LinearLayout = itemView.findViewById(R.id.linearLayout)
         val expandableLayout: RelativeLayout = itemView.findViewById(R.id.expandable_layout)
 
@@ -63,7 +63,6 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             }
         }
     }
-
 
 
     class NotesComparator : DiffUtil.ItemCallback<Note>() {

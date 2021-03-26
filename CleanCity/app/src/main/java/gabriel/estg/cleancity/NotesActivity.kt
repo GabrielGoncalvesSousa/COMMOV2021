@@ -1,10 +1,10 @@
 package gabriel.estg.cleancity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
@@ -54,19 +54,24 @@ class NotesActivity : AppCompatActivity() {
             notes?.let { adapter.submitList(it) }
         })
 
-//        val swipeDelete = object : SwipeToDeleteCallback(this,0,ItemTouchHelper.LEFT) {
-//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                adapter.deleteItem(viewHolder.adapterPosition)
-//            }
-//        }
-//        val itemTouchHelper = ItemTouchHelper(swipeDelete)
-//        itemTouchHelper.attachToRecyclerView(recyclerView)
-//
-//        val deleteButton = findViewById<Button>(R.id.buttonDelete)
-//        deleteButton.setOnClickListener{
-//            var notes=noteViewModel.allNotes
-//        }
+        //Swipe Left to Delete
+        val swipeDelete = object : SwipeToDeleteCallback(this, 0, ItemTouchHelper.LEFT) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
+                var noteId: Int
+
+                //Finds the note and deletes it
+                for (note in noteViewModel.allNotes.value!!) {
+                    if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
+                        noteId = note.id!!
+                        noteViewModel.deleteNote(noteId)
+                    }
+                }
+            }
+        }
+        //Updates the recyclerView
+        val itemTouchHelper = ItemTouchHelper(swipeDelete)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     //Inflate Options Menu
@@ -100,6 +105,7 @@ class NotesActivity : AppCompatActivity() {
             var postalCode = intentData?.getStringExtra("postalCode")
             var date = intentData?.getStringExtra("date")
             var observations = intentData?.getStringExtra("observations")
+
 
             val note = Note(
                 null,
