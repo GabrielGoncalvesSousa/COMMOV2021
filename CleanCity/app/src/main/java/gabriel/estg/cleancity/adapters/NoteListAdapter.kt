@@ -3,7 +3,6 @@ package gabriel.estg.cleancity.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -12,15 +11,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.R
 import gabriel.estg.cleancity.database.entities.Note
-import gabriel.estg.cleancity.viewModel.NoteViewModel
-import org.w3c.dom.Text
+
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
 
-
-    fun getCurrentId(note: Note): Int? {
-        return note.id
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder.create(parent)
@@ -30,6 +24,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         var current = getItem(position)
         var isExpandable: Boolean = current.expandable
 
+        holder.noteId.text = current.id.toString()
         holder.noteItemView.text = current.assunto
         holder.streetItemView.text = current.rua
         holder.localityItemView.text = current.cidade
@@ -46,6 +41,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
     }
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val noteId: TextView = itemView.findViewById(R.id.noteId)
         val noteItemView: TextView = itemView.findViewById(R.id.subject)
         val streetItemView: TextView = itemView.findViewById(R.id.reciclerStreetBD)
         val localityItemView: TextView = itemView.findViewById(R.id.reciclerLocalityDB)

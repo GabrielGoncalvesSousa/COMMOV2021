@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
-
-abstract class SwipeToDeleteCallback(context: Context, dragDir: Int, swipeDir: Int) :
+abstract class SwipeToEditCallback(context: Context, dragDir: Int, swipeDir: Int) :
     ItemTouchHelper.SimpleCallback(dragDir, swipeDir) {
 
-    val backgroundColor = ContextCompat.getColor(context, R.color.holo_red_light)
+    val backgroundColor = ContextCompat.getColor(context, R.color.holo_green_light)
 
     override fun onMove(
         recyclerView: RecyclerView,
@@ -41,7 +40,7 @@ abstract class SwipeToDeleteCallback(context: Context, dragDir: Int, swipeDir: I
             isCurrentlyActive
         )
             .addBackgroundColor(backgroundColor)
-            .addActionIcon(gabriel.estg.cleancity.R.drawable.ic_action_delete)
+            .addActionIcon(gabriel.estg.cleancity.R.drawable.ic_action_edit)
             .create()
             .decorate()
         super.onChildDraw(
