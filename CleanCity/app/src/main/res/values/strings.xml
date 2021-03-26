@@ -35,7 +35,7 @@
 
     <!--    AddNotes_Page EditTexts  -->
     <string name="editTextsAddNotesPage_Subject">Insert Subject</string>
-    <string name="editTextsAddNotesPage_Street">Street Adress</string>
+    <string name="editTextsAddNotesPage_Street">Street Address</string>
     <string name="editTextsAddNotesPage_Locality">District/City</string>
 
     <!--    AddNotes_Page Save Button  -->
@@ -49,4 +49,8 @@
     <!--    EditNotes_Page Toolbar  -->
     <string name="editNotesPage_ActionBarTitle">Edit Note</string>
 
+
+    <!--    EditNotes_Page Toasts -->
+    <string name="editNotesPage_NoteEditedSuccessfully">Note Edited Successfully</string>
+    <string name="editNotesPage_NoteEditedFail">Note not edited, missing Information</string>
 </resources>

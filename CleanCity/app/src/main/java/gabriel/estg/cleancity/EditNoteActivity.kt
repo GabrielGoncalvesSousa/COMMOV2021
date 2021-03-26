@@ -6,19 +6,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.*
-import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
-import gabriel.estg.cleancity.database.NotesApplication
-import gabriel.estg.cleancity.viewModel.NoteViewModel
-import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 import java.util.*
 
 class EditNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_note)
+
 
         var id: Int? = intent.getIntExtra("id", 0)
         var subjectInfo = intent.getStringExtra("subject")
@@ -30,12 +26,12 @@ class EditNoteActivity : AppCompatActivity() {
 
 
         //EditTexts
-        var subject = findViewById<EditText>(R.id.editTextSubject)
-        var street = findViewById<EditText>(R.id.editTextStreet)
-        var locality = findViewById<EditText>(R.id.editTextLocality)
-        var postalCode = findViewById<EditText>(R.id.editTextPostal)
-        var date = findViewById<EditText>(R.id.editTextDate)
-        var observations = findViewById<EditText>(R.id.editTextObservations)
+        var subject = findViewById<EditText>(R.id.editTextSubjectEDIT)
+        var street = findViewById<EditText>(R.id.editTextStreetEDIT)
+        var locality = findViewById<EditText>(R.id.editTextLocalityEDIT)
+        var postalCode = findViewById<EditText>(R.id.editTextPostalEDIT)
+        var date = findViewById<EditText>(R.id.editTextDateEDIT)
+        var observations = findViewById<EditText>(R.id.editTextObservationsEDIT)
 
         subject.setText(subjectInfo)
         street.setText(streetInfo)
@@ -58,7 +54,7 @@ class EditNoteActivity : AppCompatActivity() {
         var year = calendarView.get(Calendar.YEAR)
         var month = calendarView.get(Calendar.MONTH)
         var day = calendarView.get(Calendar.DAY_OF_MONTH)
-        var dateView = findViewById<EditText>(R.id.editTextDate)
+        var dateView = findViewById<EditText>(R.id.editTextDateEDIT)
         var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendar)
         buttonImagecalendar.setOnClickListener {
             var datePicker = DatePickerDialog(
@@ -71,7 +67,7 @@ class EditNoteActivity : AppCompatActivity() {
         }
 
         //Save Button
-        val button = findViewById<Button>(R.id.buttonSave)
+        val button = findViewById<Button>(R.id.buttonSaveEDIT)
         button.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(
@@ -81,6 +77,7 @@ class EditNoteActivity : AppCompatActivity() {
             ) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
+                replyIntent.putExtra("id",id)
                 replyIntent.putExtra("subject", subject.text.toString())
                 replyIntent.putExtra("street", street.text.toString())
                 replyIntent.putExtra("locality", locality.text.toString())

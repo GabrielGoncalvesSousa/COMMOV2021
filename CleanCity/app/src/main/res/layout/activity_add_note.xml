@@ -150,7 +150,7 @@
         android:id="@+id/imageButtonCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDateEDIT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toEndOf="@+id/textView6"

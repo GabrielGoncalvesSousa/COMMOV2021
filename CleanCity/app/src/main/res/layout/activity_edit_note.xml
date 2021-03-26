@@ -23,7 +23,7 @@
         app:titleTextColor="@color/white" />
 
     <EditText
-        android:id="@+id/editTextSubject"
+        android:id="@+id/editTextSubjectEDIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextStreet"
+        android:id="@+id/editTextStreetEDIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -71,12 +71,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/editTextDateEDIT"
         android:layout_width="130dp"
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPostal"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPostalEDIT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.804"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextLocality"
+        android:id="@+id/editTextLocalityEDIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -116,7 +116,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextPostal"
+        android:id="@+id/editTextPostalEDIT"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -150,7 +150,7 @@
         android:id="@+id/imageButtonCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDateEDIT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -174,7 +174,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextObservations"
+        android:id="@+id/editTextObservationsEDIT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -224,13 +224,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/buttonSaveEDIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/saveButtonAddNotesPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextObservations" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextObservationsEDIT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

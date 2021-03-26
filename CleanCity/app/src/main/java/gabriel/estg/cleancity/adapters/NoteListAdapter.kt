@@ -24,6 +24,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
         var current = getItem(position)
         var isExpandable: Boolean = current.expandable
 
+        holder.noteId.text = current.id.toString()
         holder.noteItemView.text = current.assunto
         holder.streetItemView.text = current.rua
         holder.localityItemView.text = current.cidade
@@ -40,6 +41,7 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
     }
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val noteId: TextView = itemView.findViewById(R.id.noteId)
         val noteItemView: TextView = itemView.findViewById(R.id.subject)
         val streetItemView: TextView = itemView.findViewById(R.id.reciclerStreetBD)
         val localityItemView: TextView = itemView.findViewById(R.id.reciclerLocalityDB)

@@ -3,14 +3,11 @@ package gabriel.estg.cleancity
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
-import gabriel.estg.cleancity.database.entities.Note
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
@@ -40,7 +37,7 @@ class AddNoteActivity : AppCompatActivity() {
         var year = calendarView.get(Calendar.YEAR)
         var month = calendarView.get(Calendar.MONTH)
         var day = calendarView.get(Calendar.DAY_OF_MONTH)
-        var dateView = findViewById<EditText>(R.id.editTextDate)
+        var dateView = findViewById<EditText>(R.id.editTextDateEDIT)
         var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendar)
         buttonImagecalendar.setOnClickListener {
             var datePicker = DatePickerDialog(
