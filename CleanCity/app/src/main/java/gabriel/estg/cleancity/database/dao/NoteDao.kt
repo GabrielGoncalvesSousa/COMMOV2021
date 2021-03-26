@@ -1,9 +1,6 @@
 package gabriel.estg.cleancity.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import gabriel.estg.cleancity.database.entities.Note
 import kotlinx.coroutines.flow.Flow
 
@@ -18,4 +15,11 @@ interface NoteDao {
 
     @Query("DELETE FROM note_table")
     suspend fun deleteAll()
+
+//
+    @Query("DELETE FROM note_table WHERE id = :id")
+    suspend fun deleteNote(id: Int)
+
+//    @Delete
+//    suspend fun deleteNote(id:Int)
 }

@@ -9,9 +9,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.activity.viewModels
-import androidx.appcompat.view.menu.MenuView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.adapters.NoteListAdapter
@@ -26,6 +27,7 @@ class NotesActivity : AppCompatActivity() {
     private val noteViewModel: NoteViewModel by viewModels {
         NoteViewModelFactory((application as NotesApplication).repository)
     }
+
     private val newListActivityRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +54,46 @@ class NotesActivity : AppCompatActivity() {
             notes?.let { adapter.submitList(it) }
         })
 
+        //Swipe Left to Delete
+        val swipeDelete = object : SwipeToDeleteCallback(this, 0, ItemTouchHelper.LEFT) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                var noteId: Int
+
+                //Finds the note and deletes it
+                for (note in noteViewModel.allNotes.value!!) {
+                    if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
+                        noteId = note.id!!
+                        noteViewModel.deleteNote(noteId)
+                    }
+                }
+            }
+        }
+        //Updates the recyclerView
+        val itemTouchHelper = ItemTouchHelper(swipeDelete)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
+
+    //Inflate Options Menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_notes, menu)
+        return true
+    }
+
+    //Items from the menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var itemView = item.itemId
+        when (itemView) {
+            R.id.addNote -> {
+                val intent = Intent(this@NotesActivity, AddNoteActivity::class.java)
+                startActivityForResult(intent, newListActivityRequestCode)
+            }
+        }
+        return false
+    }
+
+    //Result from the Add Notes Activity
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
@@ -66,6 +106,7 @@ class NotesActivity : AppCompatActivity() {
             var postalCode = intentData?.getStringExtra("postalCode")
             var date = intentData?.getStringExtra("date")
             var observations = intentData?.getStringExtra("observations")
+
 
             val note = Note(
                 null,
@@ -90,22 +131,6 @@ class NotesActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_notes, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var itemView = item.itemId
-        when (itemView) {
-            R.id.addNote -> {
-                val intent = Intent(this@NotesActivity, AddNoteActivity::class.java)
-                startActivityForResult(intent, newListActivityRequestCode)
-            }
-        }
-        return false
     }
 
 }
