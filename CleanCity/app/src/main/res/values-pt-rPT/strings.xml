@@ -19,5 +19,16 @@
     <string name="editTextsAddNotesPage_Subject">Insira Assunto</string>
     <string name="editTextsAddNotesPage_Street">Nome da Rua</string>
     <string name="editTextsAddNotesPage_Locality">Distrito/Cidade</string>
-    <string name="buttonSave">Guardar</string>
+    <string name="textViewReciclerView_Subject">"Assunto: "</string>
+    <string name="textViewReciclerView_Street">"Rua: "</string>
+    <string name="textViewReciclerView_Locality">"Localidade: "</string>
+    <string name="textViewReciclerView_PostalCode">"Código-Postal: "</string>
+    <string name="textViewReciclerView_Date">"Data: "</string>
+    <string name="textViewReciclerView_Observations">"Observações: "</string>
+    <string name="saveButtonAddNotesPage">Guardar</string>
+    <string name="toastFailAddNotesPage">Nota não adicionada, falta de Informação</string>
+    <string name="toastSuccessAddNotesPage">Nota adicionada com  sucesso</string>
+    <string name="editNotesPage_ActionBarTitle">Editar Nota</string>
+    <string name="editNotesPage_NoteEditedSuccessfully">Nota editada com  sucesso</string>
+    <string name="editNotesPage_NoteEditedFail">Nota não editada, falta de Informação</string>
 </resources>

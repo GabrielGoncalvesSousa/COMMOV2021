@@ -10,18 +10,35 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import java.util.*
 
-class AddNoteActivity : AppCompatActivity() {
+class EditNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
+        setContentView(R.layout.activity_edit_note)
+
+
+        var id: Int? = intent.getIntExtra("id", 0)
+        var subjectInfo = intent.getStringExtra("subject")
+        var streetInfo = intent.getStringExtra("street")
+        var localityInfo = intent.getStringExtra("locality")
+        var postalCodeInfo = intent.getStringExtra("postalCode")
+        var dateInfo = intent.getStringExtra("date")
+        var observationsInfo = intent.getStringExtra("observations")
+
 
         //EditTexts
-        var subject = findViewById<EditText>(R.id.editTextSubject)
-        var street = findViewById<EditText>(R.id.editTextStreet)
-        var locality = findViewById<EditText>(R.id.editTextLocality)
-        var postalCode = findViewById<EditText>(R.id.editTextPostal)
-        var date = findViewById<EditText>(R.id.editTextDate)
-        var observations = findViewById<EditText>(R.id.editTextObservations)
+        var subject = findViewById<EditText>(R.id.editTextSubjectEDIT)
+        var street = findViewById<EditText>(R.id.editTextStreetEDIT)
+        var locality = findViewById<EditText>(R.id.editTextLocalityEDIT)
+        var postalCode = findViewById<EditText>(R.id.editTextPostalEDIT)
+        var date = findViewById<EditText>(R.id.editTextDateEDIT)
+        var observations = findViewById<EditText>(R.id.editTextObservationsEDIT)
+
+        subject.setText(subjectInfo)
+        street.setText(streetInfo)
+        locality.setText(localityInfo)
+        postalCode.setText(postalCodeInfo)
+        date.setText(dateInfo)
+        observations.setText(observationsInfo)
 
 
         //Toolbar
@@ -50,13 +67,17 @@ class AddNoteActivity : AppCompatActivity() {
         }
 
         //Save Button
-        val button = findViewById<Button>(R.id.buttonSave)
+        val button = findViewById<Button>(R.id.buttonSaveEDIT)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(locality.text) || TextUtils.isEmpty(postalCode.text)
-                || TextUtils.isEmpty(date.text) || TextUtils.isEmpty(observations.text)) {
+            if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(
+                    locality.text
+                ) || TextUtils.isEmpty(postalCode.text)
+                || TextUtils.isEmpty(date.text) || TextUtils.isEmpty(observations.text)
+            ) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
+                replyIntent.putExtra("id",id)
                 replyIntent.putExtra("subject", subject.text.toString())
                 replyIntent.putExtra("street", street.text.toString())
                 replyIntent.putExtra("locality", locality.text.toString())
@@ -73,3 +94,4 @@ class AddNoteActivity : AppCompatActivity() {
         const val EXTRA_REPLY = "com.example.android.notelistsql.REPLY"
     }
 }
+

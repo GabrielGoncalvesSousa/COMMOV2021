@@ -70,10 +70,22 @@ public abstract class NoteDatabase : RoomDatabase() {
                 "Cidade das couves",
                 "4213",
                 "3/21/2021",
-                "Ta tudo partido"
+                "Ta tudo partido",
+                false
+            )
+
+            var note1 = Note(
+                1,
+                "Caes a solta",
+                "Rua Dos blimblins",
+                "Cidade do mato",
+                "4213",
+                "3/21/2021",
+                "TOWINFOIEHRGIOHEROGIEROIG9OERUHJGPOIEHWGIOPUHERWPIOUHGIPUREWHGPUIHWREUIHGUIWERHGIUWHERIUGHEWIURGHIUWERHGIUWEHRGIUEHRGIUHWEIROUGHIWEOURHGIEUOWRHGIOUEWHRGIUOEHWRIOGUHEIWRGHIOEURWOHGIUHIRUGH",
+                false
             )
             noteDao.insert(note)
-
+            noteDao.insert(note1)
 
         }
     }

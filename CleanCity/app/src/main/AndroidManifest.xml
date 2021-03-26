@@ -10,7 +10,7 @@
         android:roundIcon="@drawable/logo_transparent"
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanCity">
-        <activity android:name=".NewNoteActivity"></activity>
+        <activity android:name=".EditNoteActivity"></activity>
         <activity android:name=".AddNoteActivity" />
         <activity
             android:name=".NotesActivity"
