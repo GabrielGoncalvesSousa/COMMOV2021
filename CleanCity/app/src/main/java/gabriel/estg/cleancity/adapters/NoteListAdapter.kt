@@ -3,7 +3,6 @@ package gabriel.estg.cleancity.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -12,15 +11,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.R
 import gabriel.estg.cleancity.database.entities.Note
-import gabriel.estg.cleancity.viewModel.NoteViewModel
-import org.w3c.dom.Text
+
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
 
-
-    fun getCurrentId(note: Note): Int? {
-        return note.id
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder.create(parent)

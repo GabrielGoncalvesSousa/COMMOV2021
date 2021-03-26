@@ -3,7 +3,6 @@ package gabriel.estg.cleancity
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,7 +11,6 @@ import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import gabriel.estg.cleancity.database.NotesApplication
-import gabriel.estg.cleancity.database.entities.Note
 import gabriel.estg.cleancity.viewModel.NoteViewModel
 import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 import java.util.*
@@ -22,6 +20,14 @@ class EditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_note)
 
+        var id: Int? = intent.getIntExtra("id", 0)
+        var subjectInfo = intent.getStringExtra("subject")
+        var streetInfo = intent.getStringExtra("street")
+        var localityInfo = intent.getStringExtra("locality")
+        var postalCodeInfo = intent.getStringExtra("postalCode")
+        var dateInfo = intent.getStringExtra("date")
+        var observationsInfo = intent.getStringExtra("observations")
+
 
         //EditTexts
         var subject = findViewById<EditText>(R.id.editTextSubject)
@@ -30,6 +36,13 @@ class EditNoteActivity : AppCompatActivity() {
         var postalCode = findViewById<EditText>(R.id.editTextPostal)
         var date = findViewById<EditText>(R.id.editTextDate)
         var observations = findViewById<EditText>(R.id.editTextObservations)
+
+        subject.setText(subjectInfo)
+        street.setText(streetInfo)
+        locality.setText(localityInfo)
+        postalCode.setText(postalCodeInfo)
+        date.setText(dateInfo)
+        observations.setText(observationsInfo)
 
 
         //Toolbar
@@ -82,24 +95,6 @@ class EditNoteActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_REPLY = "com.example.android.notelistsql.REPLY"
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intentData)
-
-
-        var id :Int? = intentData?.getIntExtra("id",0)
-
-        val noteViewModel: NoteViewModel by viewModels {
-            NoteViewModelFactory((application as NotesApplication).repository)
-        }
-
-        for (note in noteViewModel.allNotes.value!!) {
-            if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
-                noteId = note.id!!
-                noteViewModel.deleteNote(noteId)
-            }
-        }
     }
 }
 

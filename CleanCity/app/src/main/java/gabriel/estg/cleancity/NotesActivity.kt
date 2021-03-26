@@ -76,10 +76,15 @@ class NotesActivity : AppCompatActivity() {
                 //Finds the note and deletes it
                 for (note in noteViewModel.allNotes.value!!) {
                     if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
-                        noteId = note.id!!
                         val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
-                        intent.putExtra("id",noteId)
-                      
+                        intent.putExtra("id",note.id)
+                        intent.putExtra("subject", note.assunto)
+                        intent.putExtra("street",note.rua)
+                        intent.putExtra("locality",note.cidade)
+                        intent.putExtra("postalCode", note.codigo_postal)
+                        intent.putExtra("date", note.data)
+                        intent.putExtra("observations", note.observacoes)
+
                         startActivityForResult(intent, newListActivityRequestCode)
                     }
                 }
