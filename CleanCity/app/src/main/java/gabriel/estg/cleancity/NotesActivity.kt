@@ -58,8 +58,8 @@ class NotesActivity : AppCompatActivity() {
         val swipeDelete = object : SwipeToDeleteCallback(this, 0, ItemTouchHelper.LEFT) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 for (note in noteViewModel.allNotes.value!!) {
-                    var idHolder=viewHolder.itemView.findViewById<TextView>(R.id.noteId).text
-                    var idInt=Integer.parseInt(idHolder.toString())
+                    var idHolder = viewHolder.itemView.findViewById<TextView>(R.id.noteId).text
+                    var idInt = Integer.parseInt(idHolder.toString())
                     if (note.id == idInt) {
                         noteViewModel.deleteNote(idInt)
                     }
@@ -71,8 +71,8 @@ class NotesActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
                 for (note in noteViewModel.allNotes.value!!) {
-                    var idHolder=viewHolder.itemView.findViewById<TextView>(R.id.noteId).text
-                    var idInt=Integer.parseInt(idHolder.toString())
+                    var idHolder = viewHolder.itemView.findViewById<TextView>(R.id.noteId).text
+                    var idInt = Integer.parseInt(idHolder.toString())
                     if (note.id == idInt) {
 
                         val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
@@ -122,7 +122,7 @@ class NotesActivity : AppCompatActivity() {
 
         Log.i("ee", requestCode.toString())
         //Result from the Add Notes Activity
-        if ( (requestCode == 1 && resultCode == Activity.RESULT_OK) ) {
+        if ((requestCode == 1 && resultCode == Activity.RESULT_OK)) {
             //Getting the data from the intent result
             var subject = intentData?.getStringExtra("subject")
             var street = intentData?.getStringExtra("street")
@@ -148,15 +148,15 @@ class NotesActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
 
-        }else if(requestCode == 1 && resultCode == Activity.RESULT_CANCELED) {
+        } else if (requestCode == 1 && resultCode == Activity.RESULT_CANCELED) {
             Toast.makeText(
                 applicationContext,
                 R.string.toastFailAddNotesPage,
                 Toast.LENGTH_LONG
             ).show()
-        }else if ( requestCode == 20 && resultCode == Activity.RESULT_OK ) { //Result from the Edit Notes Activity
+        } else if (requestCode == 20 && resultCode == Activity.RESULT_OK) { //Result from the Edit Notes Activity
             //Getting the data from the intent result
-            var id= intentData?.getIntExtra("id",0)
+            var id = intentData?.getIntExtra("id", 0)
             var subject = intentData?.getStringExtra("subject")
             var street = intentData?.getStringExtra("street")
             var locality = intentData?.getStringExtra("locality")

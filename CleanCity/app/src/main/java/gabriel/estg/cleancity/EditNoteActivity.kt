@@ -1,5 +1,6 @@
 package gabriel.estg.cleancity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -11,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import java.util.*
 
 class EditNoteActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_note)
@@ -55,7 +57,7 @@ class EditNoteActivity : AppCompatActivity() {
         var month = calendarView.get(Calendar.MONTH)
         var day = calendarView.get(Calendar.DAY_OF_MONTH)
         var dateView = findViewById<EditText>(R.id.editTextDateEDIT)
-        var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendar)
+        var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendarEDIT)
         buttonImagecalendar.setOnClickListener {
             var datePicker = DatePickerDialog(
                 this,

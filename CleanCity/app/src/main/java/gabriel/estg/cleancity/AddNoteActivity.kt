@@ -37,7 +37,7 @@ class AddNoteActivity : AppCompatActivity() {
         var year = calendarView.get(Calendar.YEAR)
         var month = calendarView.get(Calendar.MONTH)
         var day = calendarView.get(Calendar.DAY_OF_MONTH)
-        var dateView = findViewById<EditText>(R.id.editTextDateEDIT)
+        var dateView = findViewById<EditText>(R.id.editTextDate)
         var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendar)
         buttonImagecalendar.setOnClickListener {
             var datePicker = DatePickerDialog(
