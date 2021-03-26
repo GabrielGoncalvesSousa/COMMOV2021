@@ -10,4 +10,6 @@
 
 
     <color name="buttonLabel">#FFFFFF</color>
+    <color name="colorRecyclerViewDelete">#F60000</color>
+
 </resources>

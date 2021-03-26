@@ -74,6 +74,7 @@ class NotesActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
+
     //Inflate Options Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_notes, menu)
@@ -131,4 +132,5 @@ class NotesActivity : AppCompatActivity() {
             ).show()
         }
     }
+
 }
