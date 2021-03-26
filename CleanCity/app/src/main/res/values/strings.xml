@@ -46,4 +46,7 @@
     <string name="toastFailAddNotesPage">Note not added, missing information</string>
     <string name="toastSuccessAddNotesPage">Note added successfully</string>
 
+    <!--    EditNotes_Page Toolbar  -->
+    <string name="editNotesPage_ActionBarTitle">Edit Note</string>
+
 </resources>

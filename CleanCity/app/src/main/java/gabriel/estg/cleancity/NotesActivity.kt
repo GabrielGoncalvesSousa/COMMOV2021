@@ -24,7 +24,7 @@ import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 class NotesActivity : AppCompatActivity() {
 
 
-    private val noteViewModel: NoteViewModel by viewModels {
+     val noteViewModel: NoteViewModel by viewModels {
         NoteViewModelFactory((application as NotesApplication).repository)
     }
 
@@ -59,7 +59,6 @@ class NotesActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
                 var noteId: Int
-
                 //Finds the note and deletes it
                 for (note in noteViewModel.allNotes.value!!) {
                     if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
@@ -69,9 +68,29 @@ class NotesActivity : AppCompatActivity() {
                 }
             }
         }
+
+        val swipeEdit = object : SwipeToEditCallback(this, 0, ItemTouchHelper.RIGHT) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                var noteId: Int
+                //Finds the note and deletes it
+                for (note in noteViewModel.allNotes.value!!) {
+                    if (note.assunto == viewHolder.itemView.findViewById<TextView>(R.id.subject).text) {
+                        noteId = note.id!!
+                        val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
+                        intent.putExtra("id",noteId)
+                      
+                        startActivityForResult(intent, newListActivityRequestCode)
+                    }
+                }
+            }
+        }
+
         //Updates the recyclerView
         val itemTouchHelper = ItemTouchHelper(swipeDelete)
+        val itemTouchHelperEdit = ItemTouchHelper(swipeEdit)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+        itemTouchHelperEdit.attachToRecyclerView(recyclerView)
     }
 
 
@@ -93,12 +112,11 @@ class NotesActivity : AppCompatActivity() {
         return false
     }
 
-    //Result from the Add Notes Activity
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
-
+        //Result from the Add Notes Activity
         if (requestCode == newListActivityRequestCode && resultCode == Activity.RESULT_OK) {
-
             //Getting the data from the intent result
             var subject = intentData?.getStringExtra("subject")
             var street = intentData?.getStringExtra("street")
@@ -131,6 +149,42 @@ class NotesActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-    }
 
+        //Result from the Edit Notes Activity
+//        if (requestCode == newListActivityRequestCode && resultCode == Activity.RESULT_OK) {
+//            //Getting the data from the intent result
+//            var subject = intentData?.getStringExtra("subject")
+//            var street = intentData?.getStringExtra("street")
+//            var locality = intentData?.getStringExtra("locality")
+//            var postalCode = intentData?.getStringExtra("postalCode")
+//            var date = intentData?.getStringExtra("date")
+//            var observations = intentData?.getStringExtra("observations")
+//
+//
+//            val note = Note(
+//                null,
+//                subject,
+//                street,
+//                locality,
+//                postalCode,
+//                date,
+//                observations,
+//                false
+//            )
+//            noteViewModel.insert(note)
+//            Toast.makeText(
+//                applicationContext, R.string.toastSuccessAddNotesPage,
+//                Toast.LENGTH_LONG
+//            ).show()
+//
+//        } else {
+//            Toast.makeText(
+//                applicationContext,
+//                R.string.toastFailAddNotesPage,
+//                Toast.LENGTH_LONG
+//            ).show()
+//        }
+
+
+    }
 }

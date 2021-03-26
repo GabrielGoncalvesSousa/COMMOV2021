@@ -28,4 +28,5 @@
     <string name="saveButtonAddNotesPage">Guardar</string>
     <string name="toastFailAddNotesPage">Nota não adicionada, falta de informação</string>
     <string name="toastSuccessAddNotesPage">Nota adicionada com  sucesso</string>
+    <string name="editNotesPage_ActionBarTitle">Editar Nota</string>
 </resources>
