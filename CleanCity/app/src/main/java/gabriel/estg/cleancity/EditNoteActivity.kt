@@ -18,6 +18,7 @@ class EditNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_note)
 
 
+        //Get Data From Notes Activity
         var id: Int? = intent.getIntExtra("id", 0)
         var subjectInfo = intent.getStringExtra("subject")
         var streetInfo = intent.getStringExtra("street")
@@ -27,7 +28,7 @@ class EditNoteActivity : AppCompatActivity() {
         var observationsInfo = intent.getStringExtra("observations")
 
 
-        //EditTexts
+        //Get Views Edit Texts
         var subject = findViewById<EditText>(R.id.editTextSubjectEDIT)
         var street = findViewById<EditText>(R.id.editTextStreetEDIT)
         var locality = findViewById<EditText>(R.id.editTextLocalityEDIT)
@@ -35,6 +36,7 @@ class EditNoteActivity : AppCompatActivity() {
         var date = findViewById<EditText>(R.id.editTextDateEDIT)
         var observations = findViewById<EditText>(R.id.editTextObservationsEDIT)
 
+        //Set Texts to Views
         subject.setText(subjectInfo)
         street.setText(streetInfo)
         locality.setText(localityInfo)

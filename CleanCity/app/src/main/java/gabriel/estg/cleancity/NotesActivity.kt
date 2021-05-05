@@ -67,6 +67,7 @@ class NotesActivity : AppCompatActivity() {
             }
         }
 
+        //Swipe Right to Edit
         val swipeEdit = object : SwipeToEditCallback(this, 0, ItemTouchHelper.RIGHT) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
@@ -116,7 +117,7 @@ class NotesActivity : AppCompatActivity() {
         return false
     }
 
-
+    //Get Results from Adding and Edit note
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 

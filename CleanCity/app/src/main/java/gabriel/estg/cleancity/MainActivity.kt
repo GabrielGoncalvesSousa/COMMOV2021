@@ -23,6 +23,5 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.imageViewRegisterLocation).setOnClickListener{
             Toast.makeText(applicationContext, "Register Clicked", Toast.LENGTH_LONG).show()
         }
-
     }
 }
