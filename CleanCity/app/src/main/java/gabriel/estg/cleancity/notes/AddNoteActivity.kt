@@ -1,6 +1,5 @@
-package gabriel.estg.cleancity
+package gabriel.estg.cleancity.notes
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -9,40 +8,21 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import gabriel.estg.cleancity.R
 import java.util.*
 
-class EditNoteActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
+class AddNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_note)
+        setContentView(R.layout.activity_add_note)
 
-
-        //Get Data From Notes Activity
-        var id: Int? = intent.getIntExtra("id", 0)
-        var subjectInfo = intent.getStringExtra("subject")
-        var streetInfo = intent.getStringExtra("street")
-        var localityInfo = intent.getStringExtra("locality")
-        var postalCodeInfo = intent.getStringExtra("postalCode")
-        var dateInfo = intent.getStringExtra("date")
-        var observationsInfo = intent.getStringExtra("observations")
-
-
-        //Get Views Edit Texts
-        var subject = findViewById<EditText>(R.id.editTextSubjectEDIT)
-        var street = findViewById<EditText>(R.id.editTextStreetEDIT)
-        var locality = findViewById<EditText>(R.id.editTextLocalityEDIT)
-        var postalCode = findViewById<EditText>(R.id.editTextPostalEDIT)
-        var date = findViewById<EditText>(R.id.editTextDateEDIT)
-        var observations = findViewById<EditText>(R.id.editTextObservationsEDIT)
-
-        //Set Texts to Views
-        subject.setText(subjectInfo)
-        street.setText(streetInfo)
-        locality.setText(localityInfo)
-        postalCode.setText(postalCodeInfo)
-        date.setText(dateInfo)
-        observations.setText(observationsInfo)
+        //EditTexts
+        var subject = findViewById<EditText>(R.id.editTextSubject)
+        var street = findViewById<EditText>(R.id.editTextStreet)
+        var locality = findViewById<EditText>(R.id.editTextLocality)
+        var postalCode = findViewById<EditText>(R.id.editTextPostal)
+        var date = findViewById<EditText>(R.id.editTextDate)
+        var observations = findViewById<EditText>(R.id.editTextObservations)
 
 
         //Toolbar
@@ -58,8 +38,8 @@ class EditNoteActivity : AppCompatActivity() {
         var year = calendarView.get(Calendar.YEAR)
         var month = calendarView.get(Calendar.MONTH)
         var day = calendarView.get(Calendar.DAY_OF_MONTH)
-        var dateView = findViewById<EditText>(R.id.editTextDateEDIT)
-        var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendarEDIT)
+        var dateView = findViewById<EditText>(R.id.editTextDate)
+        var buttonImagecalendar = findViewById<ImageView>(R.id.imageButtonCalendar)
         buttonImagecalendar.setOnClickListener {
             var datePicker = DatePickerDialog(
                 this,
@@ -71,17 +51,13 @@ class EditNoteActivity : AppCompatActivity() {
         }
 
         //Save Button
-        val button = findViewById<Button>(R.id.buttonSaveEDIT)
+        val button = findViewById<Button>(R.id.buttonSave)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(
-                    locality.text
-                ) || TextUtils.isEmpty(postalCode.text)
-                || TextUtils.isEmpty(date.text) || TextUtils.isEmpty(observations.text)
-            ) {
+            if (TextUtils.isEmpty(subject.text) || TextUtils.isEmpty(street.text) || TextUtils.isEmpty(locality.text) || TextUtils.isEmpty(postalCode.text)
+                || TextUtils.isEmpty(date.text) || TextUtils.isEmpty(observations.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                replyIntent.putExtra("id",id)
                 replyIntent.putExtra("subject", subject.text.toString())
                 replyIntent.putExtra("street", street.text.toString())
                 replyIntent.putExtra("locality", locality.text.toString())
@@ -98,4 +74,3 @@ class EditNoteActivity : AppCompatActivity() {
         const val EXTRA_REPLY = "com.example.android.notelistsql.REPLY"
     }
 }
-

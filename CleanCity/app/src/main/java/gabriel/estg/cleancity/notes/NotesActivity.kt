@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity
+package gabriel.estg.cleancity.notes
 
 import android.app.Activity
 import android.content.Intent
@@ -14,11 +14,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import gabriel.estg.cleancity.MainActivity
+import gabriel.estg.cleancity.R
 import gabriel.estg.cleancity.adapters.NoteListAdapter
-import gabriel.estg.cleancity.database.NotesApplication
-import gabriel.estg.cleancity.database.entities.Note
-import gabriel.estg.cleancity.viewModel.NoteViewModel
-import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
+import gabriel.estg.cleancity.notes.database.NotesApplication
+import gabriel.estg.cleancity.notes.database.entities.Note
+import gabriel.estg.cleancity.notes.viewModel.NoteViewModel
+import gabriel.estg.cleancity.notes.viewModel.NoteViewModelFactory
 
 class NotesActivity : AppCompatActivity() {
 
@@ -145,7 +147,8 @@ class NotesActivity : AppCompatActivity() {
             )
             noteViewModel.insert(note)
             Toast.makeText(
-                applicationContext, R.string.toastSuccessAddNotesPage,
+                applicationContext,
+                R.string.toastSuccessAddNotesPage,
                 Toast.LENGTH_LONG
             ).show()
 
@@ -177,7 +180,8 @@ class NotesActivity : AppCompatActivity() {
             )
             noteViewModel.updateNote(note)
             Toast.makeText(
-                applicationContext, R.string.editNotesPage_NoteEditedSuccessfully,
+                applicationContext,
+                R.string.editNotesPage_NoteEditedSuccessfully,
                 Toast.LENGTH_LONG
             ).show()
 
