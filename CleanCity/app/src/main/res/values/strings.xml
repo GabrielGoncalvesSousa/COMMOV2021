@@ -56,7 +56,16 @@
 
     <!-- Login Toasts-->
     <string name="loginMissingFields">Fill all the fields!</string>
-    <string name="loginMissingCheckbox">Check the checkbox!</string>
     <string name="loginWrongCredentials">Invalid credentials</string>
 
+    <!-- Register-->
+    <string name="registerFirstName">First Name</string>
+    <string name="registerLastName">Last Name</string>
+    <string name="registerEmail">Email</string>
+    <string name="registerPassword">Password</string>
+    <string name="registerPasswordVerify">Verify Password</string>
+    <string name="registerPasswordDontMatch">Passwords don\'t match</string>
+    <string name="registerMissingCheckbox">Check the checkbox!</string>
+    <string name="registerSuccesfull">The Register was successful</string>
+    <string name="registerNotSuccesfull">The Register was not successful</string>
 </resources>

@@ -31,17 +31,12 @@ class MainActivity : AppCompatActivity() {
             //Getting the values from the textViews
             val username = findViewById<TextView>(R.id.editTextUsername)
             val password = findViewById<TextView>(R.id.editTextTextPassword)
-            val checkBox = findViewById<CheckBox>(R.id.checkBox)
 
             //Checking if all values are not empty
             if(TextUtils.isEmpty(username.text) || TextUtils.isEmpty(password.text)){
                 Toast.makeText(applicationContext, R.string.loginMissingFields, Toast.LENGTH_LONG).show()
 
-            //Checking if checkbox is checked
-            }else if(!checkBox.isChecked){
-                Toast.makeText(applicationContext, R.string.loginMissingCheckbox, Toast.LENGTH_LONG).show()
 
-            //Requests a call to the API with the values from the textViews
             }else{
                 val login = request.login(username.text.toString(),password.text.toString())
 
@@ -65,9 +60,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Listener for register button
+        //Listener for register Image button
         findViewById<ImageView>(R.id.imageViewRegisterLocation).setOnClickListener {
-            Toast.makeText(applicationContext, "Register Clicked", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this,Register::class.java).apply {})
+        }
+
+
+        //Listener for register button
+        findViewById<Button>(R.id.buttonRegister).setOnClickListener {
+            startActivity(Intent(this,Register::class.java).apply {})
         }
 
         //Listener for notes button
