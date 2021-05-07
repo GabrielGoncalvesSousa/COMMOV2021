@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cidade Limpa</string>
-    <string name="mainPage_email">Email</string>
     <string name="mainPage_password">Password</string>
     <string name="mainPage_buttonLogin">Login</string>
     <string name="mainPage_buttonRegistar">Registar</string>
@@ -31,4 +30,8 @@
     <string name="editNotesPage_ActionBarTitle">Editar Nota</string>
     <string name="editNotesPage_NoteEditedSuccessfully">Nota editada com  sucesso</string>
     <string name="editNotesPage_NoteEditedFail">Nota não editada, falta de Informação</string>
+    <string name="loginMissingFields">Preencha todos os campos!</string>
+    <string name="loginMissingCheckbox">Concorde com os termos e condicoes.</string>
+    <string name="mainPage_username">Nome de Utilizador</string>
+    <string name="loginWrongCredentials">Credenciais invalidas</string>
 </resources>

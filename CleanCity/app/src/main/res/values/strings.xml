@@ -3,7 +3,7 @@
     <string name="app_name">Clean City</string>
 
     <!--    Main_Page  -->
-    <string name="mainPage_email">Email</string>
+    <string name="mainPage_username">Username</string>
     <string name="mainPage_password">Password</string>
     <string name="mainPage_buttonLogin">Login</string>
     <string name="mainPage_buttonRegistar">Register</string>
@@ -53,4 +53,10 @@
     <!--    EditNotes_Page Toasts -->
     <string name="editNotesPage_NoteEditedSuccessfully">Note Edited Successfully</string>
     <string name="editNotesPage_NoteEditedFail">Note not edited, missing Information</string>
+
+    <!-- Login Toasts-->
+    <string name="loginMissingFields">Fill all the fields!</string>
+    <string name="loginMissingCheckbox">Check the checkbox!</string>
+    <string name="loginWrongCredentials">Invalid credentials</string>
+
 </resources>
