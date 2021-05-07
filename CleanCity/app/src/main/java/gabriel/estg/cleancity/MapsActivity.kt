@@ -1,9 +1,14 @@
 package gabriel.estg.cleancity
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,10 +22,19 @@ import gabriel.estg.cleancity.api.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.security.Permission
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+
+    // Implementation of last know location
+    private lateinit var lastLocation: Location
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    //Implementation of location periodic updates
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +43,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+        //Initiate fusedLocationClient
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
@@ -40,9 +58,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //Fab Listener
         val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        fab.setOnClickListener({
+        fab.setOnClickListener {
             startActivity(Intent(this, AddOcorrency::class.java).apply {})
-        })
+        }
 
         //GetOcorrences to display markers
         getOcorrences.enqueue(object: Callback<List<Ocorrency>> {
@@ -70,10 +88,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         val zoomLevel = 8.0f
 
-        // Add a marker in Sydney and move the camera
         val viana = LatLng(41.691372, -8.834796)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(viana,zoomLevel))
 
+        setUpMap()
 
+
+    }
+
+    fun setUpMap(){
+        //Verificar se utilizador deu permissao
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            //Request Permission
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+            return
+        }else{
+            mMap.isMyLocationEnabled=true
+            fusedLocationClient.lastLocation.addOnSuccessListener(this) {location->
+                if(location!=null){
+                    lastLocation=location
+                    Toast.makeText(this@MapsActivity, lastLocation.toString(), Toast.LENGTH_LONG).show()
+                    val currentLatLng= LatLng (location.latitude, location.longitude)
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,12f))
+                }
+            }
+
+        }
     }
 }

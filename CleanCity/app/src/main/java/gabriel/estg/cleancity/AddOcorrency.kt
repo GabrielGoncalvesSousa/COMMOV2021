@@ -1,11 +1,14 @@
 package gabriel.estg.cleancity
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import gabriel.estg.cleancity.api.*
@@ -15,6 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddOcorrency : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_ocorrency)
@@ -27,6 +31,9 @@ class AddOcorrency : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java).apply {})
         }
+
+
+
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
 
