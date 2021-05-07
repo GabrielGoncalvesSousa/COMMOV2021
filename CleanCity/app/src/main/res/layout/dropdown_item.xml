@@ -1,0 +1,12 @@
+<TextView android:id="@+id/dropDownItem"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Textview"
+    android:padding="2dp"
+    android:textColor="@color/black"
+    android:textSize="10sp"
+    android:textStyle="bold"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+    

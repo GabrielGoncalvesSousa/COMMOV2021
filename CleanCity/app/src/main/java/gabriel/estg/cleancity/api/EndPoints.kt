@@ -31,4 +31,13 @@ interface EndPoints {
     @GET("ocorrency/getAllOcorrences")
     fun getAllOcorrences(): Call<List<Ocorrency>>
 
+    //Get All Categories
+    @GET("category/getAllCategories")
+    fun getAllCategories() : Call<List<Category>>
+
+    //Get All SubCategories
+    @GET("category/getAllSubCategories")
+    fun getAllSubCategories() : Call<List<SubCategory>>
+
+
 }

@@ -73,8 +73,11 @@
     <string name="title_activity_maps">Map</string>
 
     <!-- Add Ocorrency -->
+    <string name="addOcorrencyToolbarTitle">Add a occurrence</string>
     <string name="addOcorrencyChooseCategory">Choose the category</string>
+    <string name="addOcorrencyCategory">Category</string>
     <string name="addOcorrencyChooseSubCategory">Choose the subCategory</string>
+    <string name="addOcorrencySubCategory">SubCategory</string>
     <string name="addOcorrencyPointOfReference">Add a near Point of reference</string>
     <string name="addOcorrencyDescription">Write a description of the Occurrence</string>
 

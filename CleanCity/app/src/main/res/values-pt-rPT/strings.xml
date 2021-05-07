@@ -52,4 +52,7 @@
     <string name="addOcorrencyEditTextDescription">Descricao</string>
     <string name="buttonAddOcorrenceBack">Voltar</string>
     <string name="buttonAddOcorrenceNext">Proximo</string>
+    <string name="addOcorrencyCategory">Categoria</string>
+    <string name="addOcorrencySubCategory">SubCategoria</string>
+    <string name="addOcorrencyToolbarTitle">Adicione uma ocorrencia</string>
 </resources>
