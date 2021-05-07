@@ -12,5 +12,5 @@ data class Ocorrency(
     var description:String,
     var latitude:String,
     var longitude:String,
-    var date: Date
+    var date:String
 )

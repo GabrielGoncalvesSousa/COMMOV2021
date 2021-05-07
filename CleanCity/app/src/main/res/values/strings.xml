@@ -57,6 +57,8 @@
     <!-- Login Toasts-->
     <string name="loginMissingFields">Fill all the fields!</string>
     <string name="loginWrongCredentials">Invalid credentials</string>
+    <string name="loginSuccessful">Login Successful</string>
+
 
     <!-- Register-->
     <string name="registerFirstName">First Name</string>
@@ -68,4 +70,18 @@
     <string name="registerMissingCheckbox">Check the checkbox!</string>
     <string name="registerSuccesfull">The Register was successful</string>
     <string name="registerNotSuccesfull">The Register was not successful</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Add Ocorrency -->
+    <string name="addOcorrencyChooseCategory">Choose the category</string>
+    <string name="addOcorrencyChooseSubCategory">Choose the subCategory</string>
+    <string name="addOcorrencyPointOfReference">Add a near Point of reference</string>
+    <string name="addOcorrencyDescription">Write a description of the Occurrence</string>
+
+    <string name="addOcorrencyEditTextPointOfReference">Point of reference</string>
+    <string name="addOcorrencyEditTextDescription">Description</string>
+
+    <string name="buttonAddOcorrenceBack">Back</string>
+    <string name="buttonAddOcorrenceNext">Next</string>
+
 </resources>

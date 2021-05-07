@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gabriel.estg.cleancity.api.EndPoints
 import gabriel.estg.cleancity.api.ServiceBuilder
 import gabriel.estg.cleancity.api.User
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
+
 
 
         //Listener for login button
@@ -44,10 +46,11 @@ class MainActivity : AppCompatActivity() {
                 login.enqueue(object: Callback<List<User>> {
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         if (response.isSuccessful) {
-                            var c = listOf<User>()
-                            c+=response.body()!!
-                            Toast.makeText(applicationContext, c[0].first_name.toString(), Toast.LENGTH_LONG).show()
-                            startActivity(Intent(applicationContext, HomePage::class.java).apply {
+//                            var c = listOf<User>()
+//                            c+=response.body()!!
+//                            Toast.makeText(applicationContext, c[0].first_name.toString(), Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext,R.string.loginSuccessful, Toast.LENGTH_LONG).show()
+                            startActivity(Intent(applicationContext, MapsActivity::class.java).apply {
                             })
                         }
                     }

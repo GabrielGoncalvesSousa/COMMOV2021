@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddOcorrency">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="130dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewChooseCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewChooseCategory"
+        app:layout_constraintTop_toTopOf="@+id/textViewChooseCategory"
+       />
+
+    <TextView
+        android:id="@+id/textViewChooseCategory"
+        android:layout_width="151dp"
+        android:layout_height="21dp"
+        android:text="@string/addOcorrencyChooseCategory"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewReferencePoint"
+        app:layout_constraintStart_toStartOf="@+id/textViewReferencePoint"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+
+    <TextView
+        android:id="@+id/textViewReferencePoint"
+        android:layout_width="166dp"
+        android:layout_height="23dp"
+        android:text="@string/addOcorrencyChooseSubCategory"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewAddPointOfReference"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.185" />
+
+    <Spinner
+        android:id="@+id/spinnerSubCategory"
+        android:layout_width="130dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewReferencePoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toEndOf="@+id/textViewReferencePoint"
+        app:layout_constraintTop_toTopOf="@+id/textViewReferencePoint"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="352dp"
+        android:layout_height="115dp"
+        android:ems="10"
+        android:hint="@string/addOcorrencyEditTextDescription"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/textViewAddDescription"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:text="@string/addOcorrencyDescription"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
+        app:layout_constraintStart_toStartOf="@+id/editTextDescription"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+        android:id="@+id/textViewAddPointOfReference"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/addOcorrencyPointOfReference"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPointOfReference"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextPointOfReference"
+        android:layout_width="352dp"
+        android:layout_height="115dp"
+        android:ems="10"
+        android:hint="@string/addOcorrencyEditTextPointOfReference"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewAddDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewReferencePoint"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <Button
+        android:id="@+id/buttonAddOcorrenceBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonAddOcorrenceNext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonAddOcorrenceNext"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
+
+    <Button
+        android:id="@+id/buttonAddOcorrenceNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonAddOcorrenceBack"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAddOcorrenceBack"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAddOcorrenceBack"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAddOcorrenceBack" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,4 +42,14 @@
     <string name="registerMissingCheckbox">Concorde com os termos e condicoes.</string>
     <string name="registerSuccesfull">Registado com sucesso</string>
     <string name="registerNotSuccesfull">Registado sem sucesso</string>
+    <string name="loginSuccessful">Login com suceso</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="addOcorrencyChooseCategory">Escolha a categoria</string>
+    <string name="addOcorrencyChooseSubCategory">Escolha a subCategoria</string>
+    <string name="addOcorrencyPointOfReference">Adicione um ponto de referencia proximo</string>
+    <string name="addOcorrencyDescription">Escreva uma descricao da ocorrencia</string>
+    <string name="addOcorrencyEditTextPointOfReference">Ponto de referencia</string>
+    <string name="addOcorrencyEditTextDescription">Descricao</string>
+    <string name="buttonAddOcorrenceBack">Voltar</string>
+    <string name="buttonAddOcorrenceNext">Proximo</string>
 </resources>

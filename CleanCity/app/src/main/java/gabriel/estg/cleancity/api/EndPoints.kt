@@ -5,7 +5,7 @@ import retrofit2.http.*
 
 interface EndPoints {
     //Gets All Users
-    @GET("/user/getAllUsers")
+    @GET("user/getAllUsers")
     fun getAllUsers(): Call<List<User>>
 
     //Login
@@ -26,5 +26,9 @@ interface EndPoints {
         @Field("password") password: String,
         @Field("notification") notification: Boolean
     ) : Call<User>
+
+    //Get All Occurrences
+    @GET("ocorrency/getAllOcorrences")
+    fun getAllOcorrences(): Call<List<Ocorrency>>
 
 }
