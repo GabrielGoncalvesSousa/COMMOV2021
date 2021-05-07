@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity
+package gabriel.estg.cleancity.notes
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import gabriel.estg.cleancity.R
 import java.util.*
 
 class EditNoteActivity : AppCompatActivity() {
@@ -81,7 +82,7 @@ class EditNoteActivity : AppCompatActivity() {
             ) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                replyIntent.putExtra("id",id)
+                replyIntent.putExtra("id", id)
                 replyIntent.putExtra("subject", subject.text.toString())
                 replyIntent.putExtra("street", street.text.toString())
                 replyIntent.putExtra("locality", locality.text.toString())

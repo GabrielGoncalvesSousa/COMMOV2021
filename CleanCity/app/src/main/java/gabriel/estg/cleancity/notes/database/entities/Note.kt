@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity.database.entities
+package gabriel.estg.cleancity.notes.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

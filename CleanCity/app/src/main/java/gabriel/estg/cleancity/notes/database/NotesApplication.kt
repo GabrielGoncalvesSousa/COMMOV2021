@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity.database
+package gabriel.estg.cleancity.notes.database
 
 import android.app.Application
 import kotlinx.coroutines.CoroutineScope

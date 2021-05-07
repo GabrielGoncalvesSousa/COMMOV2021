@@ -1,7 +1,7 @@
-package gabriel.estg.cleancity.database.dao
+package gabriel.estg.cleancity.notes.database.dao
 
 import androidx.room.*
-import gabriel.estg.cleancity.database.entities.Note
+import gabriel.estg.cleancity.notes.database.entities.Note
 import kotlinx.coroutines.flow.Flow
 
 @Dao

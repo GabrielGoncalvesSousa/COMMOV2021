@@ -1,20 +1,14 @@
-package gabriel.estg.cleancity.database
+package gabriel.estg.cleancity.notes.database
 
-import android.app.Application
 import android.content.Context
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import gabriel.estg.cleancity.database.dao.NoteDao
-import gabriel.estg.cleancity.database.entities.Note
+import gabriel.estg.cleancity.notes.database.dao.NoteDao
+import gabriel.estg.cleancity.notes.database.entities.Note
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import java.time.chrono.HijrahChronology
-import java.time.chrono.HijrahChronology.INSTANCE
 
 @Database(entities = [Note::class], version = 1, exportSchema = false)
 public abstract class NoteDatabase : RoomDatabase() {

@@ -9,20 +9,20 @@
 
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_action_user"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
-        android:hint="@string/mainPage_email"
-        android:inputType="textPersonName|text|textEmailAddress"
+        android:hint="@string/mainPage_username"
+        android:inputType="textPersonName|text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.454" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -35,9 +35,11 @@
         android:hint="@string/mainPage_password"
         android:inputType="textPersonName|textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername"
+        app:layout_constraintVertical_bias="0.948" />
 
     <Button
         android:id="@+id/buttonNotes"
@@ -117,17 +119,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo_transparent" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/mainPage_checkboxTerms"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
-        app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/buttonRegister"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.705" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

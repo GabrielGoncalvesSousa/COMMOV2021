@@ -3,7 +3,7 @@
     <string name="app_name">Clean City</string>
 
     <!--    Main_Page  -->
-    <string name="mainPage_email">Email</string>
+    <string name="mainPage_username">Username</string>
     <string name="mainPage_password">Password</string>
     <string name="mainPage_buttonLogin">Login</string>
     <string name="mainPage_buttonRegistar">Register</string>
@@ -53,4 +53,35 @@
     <!--    EditNotes_Page Toasts -->
     <string name="editNotesPage_NoteEditedSuccessfully">Note Edited Successfully</string>
     <string name="editNotesPage_NoteEditedFail">Note not edited, missing Information</string>
+
+    <!-- Login Toasts-->
+    <string name="loginMissingFields">Fill all the fields!</string>
+    <string name="loginWrongCredentials">Invalid credentials</string>
+    <string name="loginSuccessful">Login Successful</string>
+
+
+    <!-- Register-->
+    <string name="registerFirstName">First Name</string>
+    <string name="registerLastName">Last Name</string>
+    <string name="registerEmail">Email</string>
+    <string name="registerPassword">Password</string>
+    <string name="registerPasswordVerify">Verify Password</string>
+    <string name="registerPasswordDontMatch">Passwords don\'t match</string>
+    <string name="registerMissingCheckbox">Check the checkbox!</string>
+    <string name="registerSuccesfull">The Register was successful</string>
+    <string name="registerNotSuccesfull">The Register was not successful</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Add Ocorrency -->
+    <string name="addOcorrencyChooseCategory">Choose the category</string>
+    <string name="addOcorrencyChooseSubCategory">Choose the subCategory</string>
+    <string name="addOcorrencyPointOfReference">Add a near Point of reference</string>
+    <string name="addOcorrencyDescription">Write a description of the Occurrence</string>
+
+    <string name="addOcorrencyEditTextPointOfReference">Point of reference</string>
+    <string name="addOcorrencyEditTextDescription">Description</string>
+
+    <string name="buttonAddOcorrenceBack">Back</string>
+    <string name="buttonAddOcorrenceNext">Next</string>
+
 </resources>

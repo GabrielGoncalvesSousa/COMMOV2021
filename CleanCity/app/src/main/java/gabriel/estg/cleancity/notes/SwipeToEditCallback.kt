@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity
+package gabriel.estg.cleancity.notes
 
 import android.R
 import android.content.Context

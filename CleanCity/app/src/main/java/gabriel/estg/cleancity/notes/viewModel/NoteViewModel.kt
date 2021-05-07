@@ -1,8 +1,8 @@
-package gabriel.estg.cleancity.viewModel
+package gabriel.estg.cleancity.notes.viewModel
 
 import androidx.lifecycle.*
-import gabriel.estg.cleancity.database.NoteRepository
-import gabriel.estg.cleancity.database.entities.Note
+import gabriel.estg.cleancity.notes.database.NoteRepository
+import gabriel.estg.cleancity.notes.database.entities.Note
 import kotlinx.coroutines.launch
 
 class NoteViewModel(private val repository: NoteRepository) : ViewModel() {

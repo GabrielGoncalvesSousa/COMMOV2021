@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity
+package gabriel.estg.cleancity.notes
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import gabriel.estg.cleancity.R
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import gabriel.estg.cleancity.R
-import gabriel.estg.cleancity.database.entities.Note
+import gabriel.estg.cleancity.notes.database.entities.Note
 
 
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesComparator()) {
