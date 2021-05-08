@@ -16,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -51,7 +52,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(),Context.MODE_PRIVATE)
-        
+
         //Initiate fusedLocationClient
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -67,7 +68,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //Fab Listener
         val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-
 
         //Implementation of location periodic updates
         locationCallback = object : LocationCallback(){
@@ -104,7 +104,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     ocorrences  = response.body()!!
                     for(ocorrency in ocorrences){
                         position = LatLng(ocorrency.latitude.toDouble(), ocorrency.longitude.toDouble())
-                        mMap.addMarker(MarkerOptions().position(position).title(ocorrency.street))
+
+                        if(ocorrency.user_id==sharedPreferences.getInt("id",0)){
+                            mMap.addMarker(MarkerOptions().position(position).title(ocorrency.street).icon(
+                                BitmapDescriptorFactory
+                                .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))
+                        }else{
+                            mMap.addMarker(MarkerOptions().position(position).title(ocorrency.street))
+                        }
                     }
                 }
             }
@@ -120,7 +127,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val zoomLevel = 8.0f
-
         val viana = LatLng(41.691372, -8.834796)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(viana,zoomLevel))
 
@@ -152,5 +158,4 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onResume()
         startLocationUpdates()
     }
-
 }
