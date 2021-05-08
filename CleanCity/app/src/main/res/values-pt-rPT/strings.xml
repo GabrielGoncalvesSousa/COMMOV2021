@@ -57,4 +57,5 @@
     <string name="addOcorrencyToolbarTitle">Adicione uma ocorrencia</string>
     <string name="addOcorrenyStreetName">Nome da rua</string>
     <string name="addOcorrenyStreetNameDescription">Escreva o nome da rua</string>
+    <string name="mainPage_checkboxRememberMe">Auto-Login?</string>
 </resources>

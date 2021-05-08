@@ -1,10 +1,13 @@
 package gabriel.estg.cleancity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gabriel.estg.cleancity.api.EndPoints
@@ -23,9 +26,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Variable to request to endpoints
         val request = ServiceBuilder.buildService(EndPoints::class.java)
 
+        //Variable sharedPreferences
+        val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(),Context.MODE_PRIVATE)
 
+        val myBoolean = sharedPreferences.getBoolean("BOOLEAN_KEY",false)
+        val myId = sharedPreferences.getInt("id",0)
+
+        if(myBoolean && myId!=0){
+            startActivity(Intent(applicationContext, MapsActivity::class.java).apply {})
+        }
 
         //Listener for login button
         findViewById<Button>(R.id.buttonLogin).setOnClickListener {
@@ -33,12 +45,11 @@ class MainActivity : AppCompatActivity() {
             //Getting the values from the textViews
             val username = findViewById<TextView>(R.id.editTextUsername)
             val password = findViewById<TextView>(R.id.editTextTextPassword)
+            val rememberMe = findViewById<CheckBox>(R.id.rememberMe)
 
             //Checking if all values are not empty
             if(TextUtils.isEmpty(username.text) || TextUtils.isEmpty(password.text)){
                 Toast.makeText(applicationContext, R.string.loginMissingFields, Toast.LENGTH_LONG).show()
-
-
             }else{
                 val login = request.login(username.text.toString(),password.text.toString())
 
@@ -46,12 +57,14 @@ class MainActivity : AppCompatActivity() {
                 login.enqueue(object: Callback<List<User>> {
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         if (response.isSuccessful) {
-//                            var c = listOf<User>()
-//                            c+=response.body()!!
-//                            Toast.makeText(applicationContext, c[0].first_name.toString(), Toast.LENGTH_LONG).show()
                             Toast.makeText(applicationContext,R.string.loginSuccessful, Toast.LENGTH_LONG).show()
-                            startActivity(Intent(applicationContext, MapsActivity::class.java).apply {
-                            })
+                            val responseBody = response.body()!!
+
+                            if(findViewById<CheckBox>(R.id.rememberMe).isChecked ){
+                                saveData(responseBody[0].id)
+                            }
+
+                            startActivity(Intent(applicationContext, MapsActivity::class.java).apply {})
                         }
                     }
 
@@ -82,5 +95,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun saveData(id:Int){
+        val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(),Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putInt("id", id)
+            putBoolean("BOOLEAN_KEY",true)
+        }.apply()
+    }
 
 }

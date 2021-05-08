@@ -1,7 +1,9 @@
 package gabriel.estg.cleancity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -25,6 +27,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.security.Permission
+import kotlin.math.log
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -46,6 +49,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+//        val sharedPrefs: SharedPreferences =getSharedPreferences(
+//            getString(R.string.sharedPreferences_file_key), Context.MODE_PRIVATE)
+//
+//        Log.i("id", sharedPrefs.getString("id", 0.toString()).toString())
 
 
         //Initiate fusedLocationClient
