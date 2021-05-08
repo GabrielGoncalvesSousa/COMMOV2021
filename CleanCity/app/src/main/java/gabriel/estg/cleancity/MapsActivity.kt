@@ -50,12 +50,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-//        val sharedPrefs: SharedPreferences =getSharedPreferences(
-//            getString(R.string.sharedPreferences_file_key), Context.MODE_PRIVATE)
-//
-//        Log.i("id", sharedPrefs.getString("id", 0.toString()).toString())
-
-
+        val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(),Context.MODE_PRIVATE)
+        
         //Initiate fusedLocationClient
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -69,7 +65,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val getOcorrences = request.getAllOcorrences()
 
-
         //Fab Listener
         val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
 
@@ -80,8 +75,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 super.onLocationResult(p0)
                 lastLocation= p0.lastLocation
                 loc= LatLng(lastLocation.latitude,lastLocation.longitude)
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15.0f))
-                Log.i("e","Coords - "+loc.latitude + " - " + loc.longitude)
+
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc,15f))
+
+                //To add a circle to display user location
+                if(ActivityCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    //Request Permission
+                    ActivityCompat.requestPermissions(Activity(), arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+                    return
+                }else{ mMap.isMyLocationEnabled=true}
 
                 fab.setOnClickListener {
                     startActivity(Intent(applicationContext, AddOcorrency::class.java).apply {
@@ -122,45 +124,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viana = LatLng(41.691372, -8.834796)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(viana,zoomLevel))
 
-//        setUpMap()
-
-
     }
 
-//    fun setUpMap(){
-//        //Verificar se utilizador deu permissao
-//        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//
-//            //Request Permission
-//            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
-//            return
-//        }else{
-//            mMap.isMyLocationEnabled=true
-//            fusedLocationClient.lastLocation.addOnSuccessListener(this) {location->
-//                if(location!=null){
-//                    lastLocation=location
-//                    Toast.makeText(this@MapsActivity, lastLocation.toString(), Toast.LENGTH_LONG).show()
-//                    val currentLatLng= LatLng (location.latitude, location.longitude)
-//                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,12f))
-//                }
-//            }
-//
-//        }
-//    }
 
     private fun startLocationUpdates(){
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
-            mMap.isMyLocationEnabled=true
             return
         }
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+
     }
 
     private fun createLocationRequest(){
         locationRequest = LocationRequest()
         locationRequest.interval=10000
         locationRequest.priority=LocationRequest.PRIORITY_HIGH_ACCURACY
+
     }
 
     override fun onPause() {

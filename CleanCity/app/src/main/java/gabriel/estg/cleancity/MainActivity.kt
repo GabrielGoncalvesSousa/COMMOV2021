@@ -60,9 +60,7 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext,R.string.loginSuccessful, Toast.LENGTH_LONG).show()
                             val responseBody = response.body()!!
 
-                            if(findViewById<CheckBox>(R.id.rememberMe).isChecked ){
-                                saveData(responseBody[0].id)
-                            }
+                           saveData(responseBody[0].id,rememberMe.isChecked)
 
                             startActivity(Intent(applicationContext, MapsActivity::class.java).apply {})
                         }
@@ -95,13 +93,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun saveData(id:Int){
+    private fun saveData(id:Int, rememberMe:Boolean){
         val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(),Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.apply{
-            putInt("id", id)
-            putBoolean("BOOLEAN_KEY",true)
-        }.apply()
+
+            editor.apply{
+                putInt("id", id)
+                putBoolean("BOOLEAN_KEY",rememberMe)
+            }.apply()
+
+
     }
 
 }
