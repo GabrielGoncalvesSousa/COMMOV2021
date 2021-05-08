@@ -87,4 +87,7 @@
     <string name="buttonAddOcorrenceBack">Back</string>
     <string name="buttonAddOcorrenceNext">Next</string>
 
+    <string name="addOcorrenyStreetName">Street Name</string>
+    <string name="addOcorrenyStreetNameDescription">Write the street name</string>
+
 </resources>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Maio-2021 às 16:39
+-- Tempo de geração: 08-Maio-2021 às 20:20
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.2
 
@@ -17,11 +17,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-
 --
 -- Banco de dados: `commov`
 --
-DROP DATABASE IF EXISTS commov;
 CREATE DATABASE IF NOT EXISTS `commov` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `commov`;
 
@@ -56,6 +54,7 @@ CREATE TABLE `ocorrency` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `subCategory_id` int(11) NOT NULL,
   `foto` varchar(200) NOT NULL,
   `street` varchar(200) NOT NULL,
   `reference_point` varchar(200) NOT NULL,
@@ -69,8 +68,9 @@ CREATE TABLE `ocorrency` (
 -- Extraindo dados da tabela `ocorrency`
 --
 
-INSERT INTO `ocorrency` (`id`, `user_id`, `category_id`, `foto`, `street`, `reference_point`, `description`, `latitude`, `longitude`, `date`) VALUES
-(2, 1, 1, 'teste', 'morada xpto', 'ha beira das bananas', 'ta tudo partido', '41.693377', '-8.846725', '2021-05-06 13:06:34');
+INSERT INTO `ocorrency` (`id`, `user_id`, `category_id`, `subCategory_id`, `foto`, `street`, `reference_point`, `description`, `latitude`, `longitude`, `date`) VALUES
+(8, 1, 1, 1, 'foto', 'Rua Banana', 'Muita banana', 'As bananas estao podres', '41.6936', '-8.8476', '2021-05-18 19:16:41'),
+(9, 1, 1, 1, 'Uma foto', 'Rua dos leds', 'ha beira do bar dos bebados', 'Os leds nao funcionam', '41.691099', '-8.827746', '2021-03-14 21:10:00');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `notifications`) VALUES
 (1, 'gabrielSousa', 'Gabriel', 'Sousa', 'gabrielsousa@ipvc.pt', '1243', 0),
-(2, 'teste', 'Clara', 'Esteves', 'clr@gmail.com', '1243', 0);
+(2, 'teste', 'Clara', 'Esteves', 'clr@gmail.com', '1243', 0),
+(3, '123', '123', '12312', '213', '123', 0);
 
 --
 -- Índices para tabelas despejadas
@@ -134,7 +135,8 @@ ALTER TABLE `category`
 ALTER TABLE `ocorrency`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_Ocorrency_Category` (`category_id`),
-  ADD KEY `FK_Ocorrency_User` (`user_id`);
+  ADD KEY `FK_Ocorrency_User` (`user_id`),
+  ADD KEY `FK_Ocorrency_SubCategory` (`subCategory_id`);
 
 --
 -- Índices para tabela `subcategory`
@@ -163,7 +165,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de tabela `ocorrency`
 --
 ALTER TABLE `ocorrency`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `subcategory`
@@ -175,7 +177,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT de tabela `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
@@ -186,6 +188,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `ocorrency`
   ADD CONSTRAINT `FK_Ocorrency_Category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `FK_Ocorrency_SubCategory` FOREIGN KEY (`subCategory_id`) REFERENCES `subcategory` (`id`),
   ADD CONSTRAINT `FK_Ocorrency_User` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --

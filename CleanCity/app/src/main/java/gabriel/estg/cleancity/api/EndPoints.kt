@@ -2,6 +2,7 @@ package gabriel.estg.cleancity.api
 
 import retrofit2.Call
 import retrofit2.http.*
+import java.time.LocalDateTime
 
 interface EndPoints {
     //Gets All Users
@@ -38,6 +39,23 @@ interface EndPoints {
     //Get All SubCategories
     @GET("category/getAllSubCategories")
     fun getAllSubCategories() : Call<List<SubCategory>>
+
+
+    //Add Ocorrency
+    @FormUrlEncoded
+    @POST("ocorrency/addNewOcorrency")
+    fun addNewOcorrency(
+        @Field("user_id") user_id: Int,
+        @Field("category_id") category_id: Int,
+        @Field("subCategory_id") subCategory_id: Int,
+        @Field("foto") foto: String,
+        @Field("street") street: String,
+        @Field("reference_point") reference_point: String,
+        @Field("description") description: String,
+        @Field("latitude") latitude: String,
+        @Field("longitude") longitude: String,
+        @Field("date") date: String
+    ) : Call<Ocorrency>
 
 
 }

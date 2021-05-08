@@ -20,8 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:title="@string/addOcorrencyToolbarTitle"
-        app:titleTextColor="@color/white"
-        />
+        app:titleTextColor="@color/white" />
 
 
     <TextView
@@ -31,11 +30,8 @@
         android:text="@string/addOcorrencyChooseCategory"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewReferencePoint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addOcorrencyToolbar"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintStart_toStartOf="@+id/textViewReferencePoint"
+        app:layout_constraintTop_toBottomOf="@+id/addOcorrencyToolbar" />
 
     <TextView
         android:id="@+id/textViewReferencePoint"
@@ -43,67 +39,9 @@
         android:layout_height="23dp"
         android:text="@string/addOcorrencyChooseSubCategory"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewChooseCategory"
-        app:layout_constraintTop_toBottomOf="@+id/addOcorrencyToolbar"
-        app:layout_constraintVertical_bias="0.199" />
-
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="269dp"
-        android:layout_height="64dp"
-        android:ems="10"
-        android:hint="@string/addOcorrencyEditTextDescription"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewAddDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference"
-        app:layout_constraintVertical_bias="0.301" />
-
-    <TextView
-        android:id="@+id/textViewAddDescription"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:text="@string/addOcorrencyDescription"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextPointOfReference"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textViewAddPointOfReference"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="180dp"
-        android:text="@string/addOcorrencyPointOfReference"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPointOfReference"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewReferencePoint"
-        app:layout_constraintTop_toBottomOf="@+id/addOcorrencyToolbar"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editTextPointOfReference"
-        android:layout_width="249dp"
-        android:layout_height="75dp"
-        android:ems="10"
-        android:hint="@string/addOcorrencyEditTextPointOfReference"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewAddPointOfReference"
-        app:layout_constraintTop_toBottomOf="@+id/textViewReferencePoint"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextStreetName"
+        app:layout_constraintStart_toStartOf="@+id/textViewStreetName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChooseCategory" />
 
     <Button
         android:id="@+id/buttonAddOcorrenceBack"
@@ -117,7 +55,6 @@
         app:layout_constraintTop_toTopOf="@+id/buttonAddOcorrenceNext"
         app:layout_constraintVertical_bias="0.0" />
 
-
     <Button
         android:id="@+id/buttonAddOcorrenceNext"
         android:layout_width="wrap_content"
@@ -128,9 +65,82 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonAddOcorrenceBack"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintVertical_bias="0.656" />
+
+    <EditText
+        android:id="@+id/editTextPointOfReference"
+        android:layout_width="249dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:hint="@string/addOcorrencyEditTextPointOfReference"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
+        app:layout_constraintStart_toStartOf="@+id/textViewAddDescription"
+        app:layout_constraintTop_toBottomOf="@+id/editTextStreetName" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="269dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:hint="@string/addOcorrencyEditTextDescription"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddOcorrenceBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.267"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference" />
+
+    <TextView
+        android:id="@+id/textViewAddDescription"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:text="@string/addOcorrencyDescription"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="@+id/editTextDescription"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPointOfReference"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewStreetName"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:text="@string/addOcorrenyStreetName"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextStreetName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextStreetName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewReferencePoint"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editTextStreetName"
+        android:layout_width="249dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:hint="@string/addOcorrenyStreetNameDescription"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPointOfReference"
+        app:layout_constraintStart_toStartOf="@+id/textViewAddPointOfReference"
+        app:layout_constraintTop_toBottomOf="@+id/textViewReferencePoint" />
 
 
+    <TextView
+        android:id="@+id/textViewAddPointOfReference"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:text="@string/addOcorrencyPointOfReference"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPointOfReference"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextPointOfReference"
+        app:layout_constraintTop_toBottomOf="@+id/editTextStreetName"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
