@@ -19,8 +19,8 @@ import gabriel.estg.cleancity.R
 import gabriel.estg.cleancity.adapters.NoteListAdapter
 import gabriel.estg.cleancity.notes.database.NotesApplication
 import gabriel.estg.cleancity.notes.database.entities.Note
-import gabriel.estg.cleancity.notes.viewModel.NoteViewModel
-import gabriel.estg.cleancity.notes.viewModel.NoteViewModelFactory
+import gabriel.estg.cleancity.viewModel.NoteViewModel
+import gabriel.estg.cleancity.viewModel.NoteViewModelFactory
 
 class NotesActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package gabriel.estg.cleancity.notes.viewModel
+package gabriel.estg.cleancity.viewModel
 
 import androidx.lifecycle.*
 import gabriel.estg.cleancity.notes.database.NoteRepository

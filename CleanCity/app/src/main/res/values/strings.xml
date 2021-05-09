@@ -94,4 +94,6 @@
     <string name="addOcorrenyStreetName">Street Name</string>
     <string name="addOcorrenyStreetNameDescription">Write the street name</string>
 
+    <!-- List My Ocorrences -->
+    <string name="myOcorrencesToolbarTitle">My Own Occurrences</string>
 </resources>

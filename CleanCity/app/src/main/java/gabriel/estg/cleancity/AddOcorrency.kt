@@ -1,5 +1,6 @@
 package gabriel.estg.cleancity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -22,18 +23,25 @@ class AddOcorrency : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_ocorrency)
 
+        //Shared Preferences
+        val sharedPreferences = getSharedPreferences(R.string.sharedPreferences_file_key.toString(), Context.MODE_PRIVATE)
+        val user_id = sharedPreferences.getInt("id",0)
+
+        //The endpoint request
+        val request = ServiceBuilder.buildService(EndPoints::class.java)
+
         //Get text inputs from textViews
         var editTextStreetName = findViewById<EditText>(R.id.editTextStreetName).text
         var editTextPointOfReference = findViewById<EditText>(R.id.editTextPointOfReference).text
         var editTextDescription = findViewById<EditText>(R.id.editTextDescription).text
 
-
-
         //Get Data From Maps Activity
         var latitude: Double = intent.getDoubleExtra("latitude",0.0)
         var longitude: Double = intent.getDoubleExtra("longitude",0.0)
 
-
+        //Store the selected category and subCategory ID
+        var selectedCategoryId:Int =0
+        var selectedSubCategoryId:Int =0
 
         //Toolbar
         var toolbar = findViewById<Toolbar>(R.id.addOcorrencyToolbar)
@@ -43,36 +51,21 @@ class AddOcorrency : AppCompatActivity() {
             startActivity(Intent(this, MapsActivity::class.java).apply {})
         }
 
-        val request = ServiceBuilder.buildService(EndPoints::class.java)
-
-        val categorias = arrayListOf<Category>()
-        val nomesCategorias = arrayListOf<String>()
-
-        val subCategorias= arrayListOf<SubCategory>()
-        val nomesSubCategorias = arrayListOf<String>()
-
         //Get Info for the category dropdown
         val getCategories = request.getAllCategories()
 
-        //Sees if the register was successful
+        //Calls the API to get the Categories data
         getCategories.enqueue(object: Callback<List<Category>> {
             override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
-
                 if (response.isSuccessful) {
 
                     //Variable that receives the body
                     var categories = listOf<Category>()
                     categories  = response.body()!!
 
-                    //Variable that transforms the body to an arrayList
-                    for(category in categories){
-                        categorias.add(category)
-                    }
-
-                    //Variable that stores the names
-                    for(categoria in categorias){
-                        nomesCategorias.add(categoria.name)
-                    }
+                    //Add the values to the dropwdown
+                    val arrayAdapterCategory= ArrayAdapter(applicationContext,R.layout.dropdown_item, categories)
+                    val dropdownViewCategory = findViewById<AutoCompleteTextView>(R.id.categoryDropdown).setAdapter(arrayAdapterCategory)
                 }
             }
             //If not displays a toast
@@ -81,44 +74,42 @@ class AddOcorrency : AppCompatActivity() {
             }
         })
 
-        //Get Info for the category dropdown
-        val getSubCategories = request.getAllSubCategories()
+        //Sets a OnItemListener to get different subCategories for the category the user selected
+        var categorySelected = findViewById<AutoCompleteTextView>(R.id.categoryDropdown).setOnItemClickListener { parent, view, position, id ->
+            val selectedCategory=parent.getItemAtPosition(position) as Category
 
-        //Sees if the register was successful
-        getSubCategories.enqueue(object: Callback<List<SubCategory>> {
-            override fun onResponse(call: Call<List<SubCategory>>, response: Response<List<SubCategory>>) {
+            //Stores the Id of the selected Item
+            selectedCategoryId=selectedCategory.id
 
-                if (response.isSuccessful) {
+            //Calls the API to Get Info for the subCategory by category ID
+            val getSubCategoriesByCategoryId = request.getAllSubCategoriesByCategoryId(selectedCategory.id)
 
-                    //Variable that receives the body
-                    var subCategories = listOf<SubCategory>()
-                    subCategories  = response.body()!!
+            getSubCategoriesByCategoryId.enqueue(object: Callback<List<SubCategory>> {
+                override fun onResponse(call: Call<List<SubCategory>>, response: Response<List<SubCategory>>) {
 
-                    //Variable that transforms the body to an arrayList
-                    for(subCategory in subCategories){
-                        subCategorias.add(subCategory)
-                    }
+                    if (response.isSuccessful) {
 
-                    //Variable that stores the names
-                    for(subCategoria in subCategorias){
-                        nomesSubCategorias.add(subCategoria.name)
+                        //Variable that receives the body
+                        var subCategories = listOf<SubCategory>()
+                        subCategories  = response.body()!!
+
+                        //Sets the subCategory adapter and dropdpown
+                        val arrayAdapterSubCategory= ArrayAdapter(applicationContext,R.layout.dropdown_item,subCategories)
+                        val dropdownViewSubCategory = findViewById<AutoCompleteTextView>(R.id.SubCategoryDropdown).setAdapter(arrayAdapterSubCategory)
+
                     }
                 }
-            }
-            //If not displays a toast
-            override fun onFailure(call: Call<List<SubCategory>>, t:Throwable){
-                Toast.makeText(applicationContext, R.string.registerNotSuccesfull, Toast.LENGTH_LONG).show()
-            }
-        })
+                //If not displays a toast
+                override fun onFailure(call: Call<List<SubCategory>>, t:Throwable){
+                    Toast.makeText(applicationContext, R.string.registerNotSuccesfull, Toast.LENGTH_LONG).show()
+                }
+            })
+        }
 
-
-        //Add the values to the dropwdown
-        val arrayAdapterCategory= ArrayAdapter(this,R.layout.dropdown_item,nomesCategorias)
-        val dropdownViewCategory = findViewById<AutoCompleteTextView>(R.id.categoryDropdown).setAdapter(arrayAdapterCategory)
-
-        val arrayAdapterSubCategory= ArrayAdapter(this,R.layout.dropdown_item,nomesSubCategorias)
-        val dropdownViewSubCategory = findViewById<AutoCompleteTextView>(R.id.SubCategoryDropdown).setAdapter(arrayAdapterSubCategory)
-
+        var selectedSubCategory= findViewById<AutoCompleteTextView>(R.id.SubCategoryDropdown).setOnItemClickListener { parent, view, position, id ->
+            val subCategorySelected = parent.getItemAtPosition(position) as SubCategory
+            selectedSubCategoryId = subCategorySelected.id
+        }
 
         //Back Button
         var backButton=findViewById<Button>(R.id.buttonAddOcorrenceBack).setOnClickListener {
@@ -127,6 +118,7 @@ class AddOcorrency : AppCompatActivity() {
 
         //Next Button
         var nextButton=findViewById<Button>(R.id.buttonAddOcorrenceNext).setOnClickListener {
+
             //Formatter of date
             val currentDateTime= LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -134,7 +126,7 @@ class AddOcorrency : AppCompatActivity() {
 
             //Calls service to know occurrences
             val request = ServiceBuilder.buildService(EndPoints::class.java)
-            val addOcorrency= request.addNewOcorrency(1,1,1,"Uma foto",editTextStreetName.toString(),editTextPointOfReference.toString(),editTextDescription.toString()
+            val addOcorrency= request.addNewOcorrency(user_id,selectedCategoryId,selectedSubCategoryId,"foto",editTextStreetName.toString(),editTextPointOfReference.toString(),editTextDescription.toString()
             ,latitude.toString(),longitude.toString(),formattedDateTime)
 
 

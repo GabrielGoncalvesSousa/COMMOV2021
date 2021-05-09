@@ -101,8 +101,5 @@ class MainActivity : AppCompatActivity() {
                 putInt("id", id)
                 putBoolean("BOOLEAN_KEY",rememberMe)
             }.apply()
-
-
     }
-
 }

@@ -41,6 +41,13 @@ interface EndPoints {
     fun getAllSubCategories() : Call<List<SubCategory>>
 
 
+    //Get All SubCategories by Category Id
+    @GET("category/getAllSubCategoriesByCategory/{category_id}")
+    fun getAllSubCategoriesByCategoryId(
+        @Path("category_id") category_id: Int
+    ) : Call<List<SubCategory>>
+
+
     //Add Ocorrency
     @FormUrlEncoded
     @POST("ocorrency/addNewOcorrency")

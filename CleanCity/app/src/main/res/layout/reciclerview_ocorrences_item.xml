@@ -11,13 +11,13 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/occorenceItemLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/subject"
+            android:id="@+id/ocorenceCategoryBD"
             style="@style/word_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,13 +28,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
-            android:id="@+id/expandable_layout"
+            android:id="@+id/ocorrences_expandable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/reciclerStreet"
+                android:id="@+id/ocorrenceReciclerSubCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
@@ -42,37 +42,24 @@
                 android:paddingTop="@dimen/reciclerViewPadding"
                 android:paddingRight="1dp"
                 android:paddingBottom="@dimen/reciclerViewPadding"
-                android:text="@string/textViewReciclerView_Street" />
+                android:text="SubCategory :" />
 
             <TextView
-                android:id="@+id/reciclerLocality"
+                android:id="@+id/ocorrenceReciclerSubCategoryBD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerStreet"
-                android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
-                android:paddingLeft="@dimen/reciclerViewPadding"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@id/ocorrenceReciclerStreet"
                 android:paddingTop="@dimen/reciclerViewPadding"
-                android:paddingRight="1dp"
                 android:paddingBottom="@dimen/reciclerViewPadding"
-                android:text="@string/textViewReciclerView_Locality" />
+                android:text="TextView"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reciclerPostalCode"
+                android:id="@+id/ocorrenceReciclerDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerLocality"
-                android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
-                android:paddingLeft="@dimen/reciclerViewPadding"
-                android:paddingTop="@dimen/reciclerViewPadding"
-                android:paddingRight="1dp"
-                android:paddingBottom="@dimen/reciclerViewPadding"
-                android:text="@string/textViewReciclerView_PostalCode" />
-
-            <TextView
-                android:id="@+id/reciclerDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/reciclerPostalCode"
+                android:layout_alignTop="@id/ocorrenceReciclerSubCategoryBD"
                 android:layout_marginStart="230dp"
                 android:layout_marginLeft="230dp"
                 android:padding="@dimen/reciclerViewPadding"
@@ -83,72 +70,97 @@
 
 
             <TextView
-                android:id="@+id/reciclerObservations"
+                android:id="@+id/ocorrenceReciclerDateDB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerDate"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@id/ocorrenceReciclerDate"
+                android:paddingTop="@dimen/reciclerViewPadding"
+                android:paddingBottom="@dimen/reciclerViewPadding"
+                android:text="TextView"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:id="@+id/ocorrenceReciclerStreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ocorrenceReciclerSubCategory"
                 android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
                 android:paddingLeft="@dimen/reciclerViewPadding"
                 android:paddingTop="@dimen/reciclerViewPadding"
                 android:paddingRight="1dp"
-                android:paddingBottom="1dp"
-                android:text="@string/textViewReciclerView_Observations" />
+                android:paddingBottom="@dimen/reciclerViewPadding"
+                android:text="Street name: " />
+
 
             <TextView
-                android:id="@+id/reciclerStreetBD"
+                android:id="@+id/ocorrenceReciclerStreetBd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
-                android:layout_toRightOf="@id/reciclerStreet"
+                android:layout_toRightOf="@id/ocorrenceReciclerStreet"
                 android:paddingTop="@dimen/reciclerViewPadding"
                 android:paddingBottom="@dimen/reciclerViewPadding"
+                android:layout_below="@id/ocorrenceReciclerSubCategory"
                 android:text="TextView"
                 android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/reciclerLocalityDB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerStreet"
-                android:layout_marginLeft="2dp"
-                android:layout_toRightOf="@id/reciclerLocality"
-                android:paddingTop="@dimen/reciclerViewPadding"
-                android:paddingBottom="@dimen/reciclerViewPadding"
-                android:text="TextView"
-                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reciclerPostalCodeDB"
+                android:id="@+id/ocorrenceReciclerPointOfReference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerLocalityDB"
-                android:layout_marginLeft="2dp"
-                android:layout_toRightOf="@id/reciclerPostalCode"
+                android:layout_below="@id/ocorrenceReciclerStreetBd"
+                android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
+                android:paddingLeft="@dimen/reciclerViewPadding"
                 android:paddingTop="@dimen/reciclerViewPadding"
+                android:paddingRight="1dp"
                 android:paddingBottom="@dimen/reciclerViewPadding"
-                android:text="TextView"
-                android:textStyle="bold" />
+                android:text="Point of reference: " />
 
             <TextView
-                android:id="@+id/reciclerDateDB"
+                android:id="@+id/ocorrenceReciclerPointOfReferenceBD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerLocalityDB"
-                android:layout_marginLeft="2dp"
-                android:layout_toRightOf="@id/reciclerDate"
-                android:paddingTop="@dimen/reciclerViewPadding"
+                android:layout_below="@id/ocorrenceReciclerPointOfReference"
+                android:layout_alignStart="@id/ocorrenceReciclerPointOfReference"
+                android:layout_alignLeft="@id/ocorrenceReciclerPointOfReference"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
+                android:paddingTop="1dp"
+                android:paddingEnd="6dp"
+                android:paddingRight="6dp"
                 android:paddingBottom="@dimen/reciclerViewPadding"
                 android:text="TextView"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
+
+
             <TextView
-                android:id="@+id/reciclerObservationsDB"
+                android:id="@+id/ocorrenceReciclerDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reciclerObservations"
-                android:layout_alignStart="@id/reciclerObservations"
-                android:layout_alignLeft="@id/reciclerObservations"
+                android:layout_below="@id/ocorrenceReciclerPointOfReferenceBD"
+                android:layout_marginLeft="@dimen/reciclerViewLeftMargin"
+                android:paddingLeft="@dimen/reciclerViewPadding"
+                android:paddingTop="@dimen/reciclerViewPadding"
+                android:paddingRight="1dp"
+                android:paddingBottom="@dimen/reciclerViewPadding"
+                android:text="Description" />
+
+            <TextView
+                android:id="@+id/ocorrenceReciclerDescriptionBD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ocorrenceReciclerDescription"
+                android:layout_alignStart="@id/ocorrenceReciclerDescription"
+                android:layout_alignLeft="@id/ocorrenceReciclerDescription"
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginEnd="6dp"
@@ -162,12 +174,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/noteId"
+                android:id="@+id/ocorrenceId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/reciclerStreetBD"
+                android:layout_alignBottom="@id/ocorrenceReciclerPointOfReference"
                 android:layout_marginLeft="40dp"
-                android:layout_toRightOf="@id/reciclerLocalityDB"
+                android:layout_toRightOf="@id/ocorrenceReciclerPointOfReference"
                 android:inputType="number"
                 android:text="TextView"
                 android:visibility="invisible" />
