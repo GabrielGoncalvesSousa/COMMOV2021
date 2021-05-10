@@ -65,4 +65,10 @@ interface EndPoints {
     ) : Call<Ocorrency>
 
 
+    //Get the names of the subCategory and category by ocorrence id, to populate the markers
+    @GET("ocorrency/marker/{id}")
+    fun getNamesforMarkers(
+        @Path("id") id: Int
+    ) : Call<List<MyMarker>>
+
 }
