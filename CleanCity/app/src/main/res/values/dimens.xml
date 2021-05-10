@@ -5,4 +5,5 @@
     <dimen name="min_height">48dp</dimen>
     <dimen name="reciclerViewPadding">4dp</dimen>
     <dimen name="reciclerViewLeftMargin">10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

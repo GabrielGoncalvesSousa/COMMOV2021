@@ -37,7 +37,6 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             current.expandable = !current.expandable
             notifyItemChanged(position)
         }
-
     }
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,7 +58,6 @@ class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteViewHolder>(NotesC
             }
         }
     }
-
 
     class NotesComparator : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {

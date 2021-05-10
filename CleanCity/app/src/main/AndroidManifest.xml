@@ -18,6 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanCity"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".ListMyOcorrences"
+            android:label="@string/myOcorrencesToolbarTitle"
+            android:theme="@style/Theme.CleanCity.NoActionBar"></activity>
         <activity android:name=".AddOcorrency" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

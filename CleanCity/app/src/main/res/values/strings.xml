@@ -2,6 +2,9 @@
     <!--    AppName  -->
     <string name="app_name">Clean City</string>
 
+    <!-- Shared Preferences -->
+    <string name="sharedPreferences_file_key" translatable="false">sharedPreferencesFile</string>
+
     <!--    Main_Page  -->
     <string name="mainPage_username">Username</string>
     <string name="mainPage_password">Password</string>
@@ -9,6 +12,7 @@
     <string name="mainPage_buttonRegistar">Register</string>
     <string name="mainPage_buttonNotas">Notes</string>
     <string name="mainPage_checkboxTerms">I agree to the Terms and Conditions</string>
+    <string name="mainPage_checkboxRememberMe">Remember me?</string>
 
     <!--    Notes_Page Toolbar  -->
     <string name="notesPage_ActionBarTitle">Personal Notes</string>
@@ -87,4 +91,9 @@
     <string name="buttonAddOcorrenceBack">Back</string>
     <string name="buttonAddOcorrenceNext">Next</string>
 
+    <string name="addOcorrenyStreetName">Street Name</string>
+    <string name="addOcorrenyStreetNameDescription">Write the street name</string>
+
+    <!-- List My Ocorrences -->
+    <string name="myOcorrencesToolbarTitle">My Own Occurrences</string>
 </resources>

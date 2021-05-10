@@ -171,8 +171,6 @@
                 android:inputType="number"
                 android:text="TextView"
                 android:visibility="invisible" />
-
-
         </RelativeLayout>
 
 

@@ -2,6 +2,7 @@ package gabriel.estg.cleancity.api
 
 import retrofit2.Call
 import retrofit2.http.*
+import java.time.LocalDateTime
 
 interface EndPoints {
     //Gets All Users
@@ -39,5 +40,35 @@ interface EndPoints {
     @GET("category/getAllSubCategories")
     fun getAllSubCategories() : Call<List<SubCategory>>
 
+
+    //Get All SubCategories by Category Id
+    @GET("category/getAllSubCategoriesByCategory/{category_id}")
+    fun getAllSubCategoriesByCategoryId(
+        @Path("category_id") category_id: Int
+    ) : Call<List<SubCategory>>
+
+
+    //Add Ocorrency
+    @FormUrlEncoded
+    @POST("ocorrency/addNewOcorrency")
+    fun addNewOcorrency(
+        @Field("user_id") user_id: Int,
+        @Field("category_id") category_id: Int,
+        @Field("subCategory_id") subCategory_id: Int,
+        @Field("foto") foto: String,
+        @Field("street") street: String,
+        @Field("reference_point") reference_point: String,
+        @Field("description") description: String,
+        @Field("latitude") latitude: String,
+        @Field("longitude") longitude: String,
+        @Field("date") date: String
+    ) : Call<Ocorrency>
+
+
+    //Get the names of the subCategory and category by ocorrence id, to populate the markers
+    @GET("ocorrency/marker/{id}")
+    fun getNamesforMarkers(
+        @Path("id") id: Int
+    ) : Call<List<MyMarker>>
 
 }
